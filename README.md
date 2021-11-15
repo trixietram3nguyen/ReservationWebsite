@@ -23,6 +23,8 @@ change to 'main'. If it says something like 'There isn't anything to compare' th
 to start working on the project. 
 7. If not, you should have an option to click on 'Create pull request'
 8. Then click 'Merge pull request'
+10. Go back to Github Desktop. Look at the tab next to 'Current Branch', click 'pull origin', or 
+click on the refresh icon if you don't see 'pull origin'
 9. After that, you should be okay to work on the project. Make sure to go to your branch and 
 go to the folder from your branch to work on the project. Then push and merge it with the main
 branch before you close the project.
