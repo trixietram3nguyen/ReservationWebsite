@@ -18,6 +18,18 @@ main branch and push it to the repo later.
 3. Then click on 'Create Pull Request'
 4. It will direct you to github page
 5. Then go to 'Pull requests' tab
+6. On the 'base' side change 'main' to the name of your branch, and on the 'compare' side, 
+change to 'main'. If it says something like 'There isn't anything to compare' then you are good 
+to start working on the project. 
+7. If not, you should have an option to click on 'Create pull request'
+8. Then click 'Merge pull request'
+9. After that, you should be okay to work on the project. Make sure to go to your branch and 
+go to the folder from your branch to work on the project. Then push and merge it with the main
+branch before you close the project.
+
+***Pull from main and merge it from main to your branch each time you start working on the project
+by follow step 3-9.
+
 
 
 
