@@ -4,7 +4,7 @@
 Helpful instructions to use GitHub Desktop
 - Link to use GitHub Desktop for beginners<br/>
 https://www.youtube.com/watch?v=rJ76X7nImak <br/>
--Link to clone, push to, and pull from the repository<br/>
+- Link to clone, push to, and pull from the repository<br/>
 https://www.youtube.com/watch?v=syyvYZeo5Ps
 
 ## Notes
