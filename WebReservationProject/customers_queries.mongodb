@@ -1,0 +1,13 @@
+/*Queries for customers database*/
+use ('customers');
+
+//Insert users log in
+db.customer.insert({customer_id:1, 
+                    first_name:"<customer_firstname>",
+                    last_name:"<customer_lastname>",
+                    email:"<login_email>",
+                    pass:"<login_password>"});
+
+//Get the password that in the same collection of the email user entered
+//return the password, and exclude the _id
+db.customer.find({email:"<email user entered>"},{pass:1,_id:0});
