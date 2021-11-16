@@ -19,18 +19,19 @@ before you actually work on the project if you are not sure how these work.
 
 ## Steps to get your branch sets up after clone the repo.
 1. Go to the branch with your name (you should be able to find it under 'Current Branch').
-2. Click 'Publish branch'
-3. Then click on 'Create Pull Request'
-4. It will direct you to github page
-5. Then go to 'Pull requests' tab
-6. On the 'base' side change 'main' to the name of your branch, and on the 'compare' side, 
-change to 'main'. If it says something like 'There isn't anything to compare' then you are good 
-to start working on the project. 
-7. If not, you should have an option to click on 'Create pull request'
-8. Then click 'Merge pull request', 'Confirm merge'
-9. Go back to Github Desktop. Look at the tab next to 'Current Branch', click 'pull origin', or 
+2. Click 'Create Pull Request' (everything should already set up for you guys up for you guys
+up to step 9 but just incase you guys need to pull the stuff that I added later)
+3. It will direct you to github page
+4. Then go to 'Pull requests' tab
+5. On the 'base' side change 'main' to the name of your branch, and on the 'compare' side, 
+change to 'main'(do it both way 'main' <- 'you branch', and 'your branch' <- 'main'). 
+If it says something like 'There isn't anything to compare' then you are good to start 
+working on the project. ***the arrows mean merge 'to here' <- 'from here'
+6. If not, you should have an option to click on 'Create pull request'
+7. Then click 'Merge pull request', 'Confirm merge'
+8. Go back to Github Desktop. Look at the tab next to 'Current Branch', click 'pull origin', or 
 click on the refresh icon if you don't see 'pull origin'
-10. After that, you should be okay to work on the project. Make sure to go to your branch and 
+9. After that, you should be okay to work on the project. Make sure to go to your branch and 
 go to the folder from your branch to work on the project. Then push and merge it with the main
 branch before you close the project.
 
