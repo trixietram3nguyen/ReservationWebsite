@@ -29,6 +29,17 @@ click on the refresh icon if you don't see 'pull origin'
 go to the folder from your branch to work on the project. Then push and merge it with the main
 branch before you close the project.
 
+## Steps to push your works onto the project and merge with the main branch
+1. After working for a bit, you should save your work and go back to Github Desktop to push your 
+works. When you go back to Github Desktop, it will automatically showing you changes. 
+On the bottom left corner, just put the description of what you did/change there. Then click 
+'Commit...'.
+2. Then you will see 'Push Request' option appear, click on it.
+3. Then click 'Create Pull Request'
+4. This time make sure the left side is 'main' and the right side is your branch
+5. Click 'Create pull request'
+6. Click 'Merge pull request'
+
 ***Pull from main and merge it from main to your branch each time you start working on the project
 by follow step 3-9.
 
