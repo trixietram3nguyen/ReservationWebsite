@@ -34,7 +34,7 @@ branch before you close the project.
 works. When you go back to Github Desktop, it will automatically showing you changes. 
 On the bottom left corner, just put the description of what you did/change there. Then click 
 'Commit...'.
-2. Then you will see 'Push Request' option appear, click on it.
+2. Then you will see 'Push origin' option appear, click on it.
 3. Then click 'Create Pull Request'
 4. This time make sure the left side is 'main' and the right side is your branch
 5. Click 'Create pull request'
