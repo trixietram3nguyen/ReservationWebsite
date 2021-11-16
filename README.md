@@ -39,6 +39,7 @@ On the bottom left corner, just put the description of what you did/change there
 4. This time make sure the left side is 'main' and the right side is your branch
 5. Click 'Create pull request'
 6. Click 'Merge pull request'
+7. Click 'Pull origin'
 
 ***Pull from main and merge it from main to your branch each time you start working on the project
 by follow step 3-9.
