@@ -14,6 +14,8 @@ main branch and push it to the repo later.
 I recommended to watch the videos first if you are new to this, it won't take long.
 I also listed out the steps for push and pull I might miss some small details, but that is 
 the idea.
+- You guys can tried to get use to these by creating a text file in your local and edit it 
+before you actually work on the project if you are not sure how these work.
 
 ## Steps to get your branch sets up after clone the repo.
 1. Go to the branch with your name (you should be able to find it under 'Current Branch').
@@ -51,7 +53,7 @@ On the bottom left corner, just put the description of what you did/change there
 
 ***Push to your branch frequently when you work on the project step 1-2. You can merge 
 your branch to the main branch(step 3-8) before close the project or do it when you push 
-your stuff into your branch.
+your stuff into your branch. Double check to see if your new stuffs are in 'main' branch.
 
 
 
