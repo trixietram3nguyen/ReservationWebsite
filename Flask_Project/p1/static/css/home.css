@@ -1,0 +1,34 @@
+body {
+  
+  background-color: pink;
+  background-image: url("Orange.GIF");
+}
+h2{
+border-style: dashed;
+background-color: rgb(224,255,255);
+}
+
+h3{
+border-style: dashed;
+  margin-top: 50px;
+  margin-bottom: 300px;
+  margin-right: 600px;
+  margin-left: 600px;
+background-color: rgb(224,255,255);
+}
+
+img {
+            display: inline;
+
+  }
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+ 
+  cursor: pointer;
+}
