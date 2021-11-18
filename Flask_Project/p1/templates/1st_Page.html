@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<!-------------------------------------- This is the head of the page---------------------------------------------------->
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/home.css') }}">
+
+</link>
+</head>
+<!-------------------------------------- This is a body of the page---------------------------------------------------->
+<body >
+<h2 ><center>Welcome to the restaurant TST </h2>
+<h2 ><center>Made by Thai Nguyen, Erik, and TraXiMie </h2>
+<h3 style="text-align:center" >
+<p style="font-size:170%";> PLEASE PICK 1 OPTION BELOW </p>
+<li><a href="{{ url_for('login') }}">LOG IN</a></li>
+<li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
+<li><a href="{{ url_for('unregister') }}">START TO RESREVE (Unregister)</a></li>
+</h3>
+</body>
+</html>
+
