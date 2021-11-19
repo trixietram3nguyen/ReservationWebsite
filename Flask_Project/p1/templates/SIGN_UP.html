@@ -4,9 +4,9 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-<link rel="stylesheet" href="{{ url_for('static',     filename='css/SIGN UP1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/SIGN UP1.css') }}">
 
-</link>
+    </link>
 </head>
 
 
@@ -26,37 +26,34 @@
 
 
 <!-------------------------------------- This is a body of the page---------------------------------------------------->
-<body >
+
+<body>
 
 
 
-<h3 style="text-align:center;">
-<p>SIGN UP</p>
-<li>
-    <label for="First_Name">First Name:</label>
-    <input name="first_name" id="First_Name" type="text" />
+    <h3 style="text-align:center;">
+        <p>SIGN UP</p>
+        <form action="{{ url_for("signup")}}" method="post">
+            <p><b>First Name:</p>
+            <input type="text" id="first_name" name="fname"></input>
+            <p><b>Last Name: </p>
+            <input type="text" id="last_name" name="lname"></input>
+            <p><b>Email:</p>
+            <input type="text" id="email_adress" name="email"></input>
+            <p><b>Password:</p>
+            <input type="text" id="password1" name="pword1"></input>
+            <p><b>Confirm Password:</p>
+            <input type="text" id="password2" name="pword2"></input>
+            <br><br>
+            <input type="submit" value="Sign Up"></a>
 
-    <label for="Name">Last Name:</label>
-    <input name="last_name" id="Last_Name" type="text" /> 
 
-</li><br><br>
-<li>
-    <label >Email: </label>
-    <input  type="email" />
-</li><br><br>
 
-<li>
-    <label >Password: </label>
-    <input  type="password" />
-</li><br><br>
-<li>
-    <label >Retype password: </label>
-    <input  type="password" />
-</li><br><br>
-<a href="{{ url_for('login') }}" class="button">Sign up</a>
 
-</h3>
+
+    </h3>
 
 
 </body>
+
 </html>
