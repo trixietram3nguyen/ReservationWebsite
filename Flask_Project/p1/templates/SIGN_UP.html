@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<!-------------------------------------- This is the head of the page---------------------------------------------------->
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/SIGN UP1.css') }}">
+
+    </link>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------- This is a body of the page---------------------------------------------------->
+
+<body>
+
+
+
+    <h3 style="text-align:center;">
+        <p>SIGN UP</p>
+        <form action="{{ url_for(" signup")}}" method="post">
+            <p><b>First Name:</p>
+            <input type="text" id="first_name" name="fname"></input>
+            <p><b>Last Name: </p>
+            <input type="text" id="last_name" name="lname"></input>
+            <p><b>Email:</p>
+            <input type="text" id="email_adress" name="email"></input>
+            <p><b>Password:</p>
+            <input type="text" id="password1" name="pword1"></input>
+            <p><b>Confirm Password:</p>
+            <input type="text" id="password2" name="pword2"></input>
+            <br><br>
+            <input type="submit" value="Sign Up"></a>
+
+
+
+
+
+    </h3>
+
+
+</body>
+
+</html>

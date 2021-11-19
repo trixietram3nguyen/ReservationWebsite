@@ -1,0 +1,22 @@
+body {
+  
+  background-color: pink;
+  background-image: url('LADY.jpg');
+}
+h3,h1{
+border-style: dashed;
+background-color: rgb(224,255,255);
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px 20px 20px 30px;
+  cursor: pointer;
+}
