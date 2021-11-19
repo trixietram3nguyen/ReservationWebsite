@@ -4,9 +4,9 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-<link rel="stylesheet" href="{{ url_for('static',     filename='css/CONFIRM2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/CONFIRM2.css') }}">
 
-</link>
+    </link>
 </head>
 
 
@@ -26,17 +26,18 @@
 
 
 <!-------------------------------------- This is a body of the page---------------------------------------------------->
-<body >
 
-<h1>
-THANK YOU FOR YOUR RESERVATION.<br>
-CONFIRMATION HAS SENT TO YOUR EMAIL.<br>
-<li>Do you want to sign up:</li>
-<a href="{{ url_for('signup') }}">YES</a>
-<br>
-<a href ="{{ url_for('confirm2') }}";>NO
-</a>
-</h1>
+<body>
+
+    <h1>
+        THANK YOU FOR YOUR RESERVATION.<br>
+        CONFIRMATION HAS SENT TO YOUR EMAIL.<br>
+        <li>Do you want to sign up:</li>
+        <a href="{{ url_for('signup') }}">YES</a>
+        <br>
+        <a href="{{ url_for('confirm2') }}" ;>NO
+        </a>
+    </h1>
 
 
 
@@ -45,5 +46,5 @@ CONFIRMATION HAS SENT TO YOUR EMAIL.<br>
 
 
 </body>
-</html>
 
+</html>
