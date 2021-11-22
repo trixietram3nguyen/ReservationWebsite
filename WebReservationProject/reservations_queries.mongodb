@@ -6,4 +6,4 @@ db.tables.find({book_status:{$exists:true}});
 
 //if return something -> that time is booked, customer has to pick another time
 //if return mothing -> that is time available, customer can book it
-//update the book_statu with customer info
+//update the book_status with customer info
