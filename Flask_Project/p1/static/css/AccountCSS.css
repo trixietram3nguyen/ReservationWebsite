@@ -1,0 +1,39 @@
+body {
+  
+
+background-image: url("KAWAI.jpg");
+animation: mymove 3s  infinite;
+
+}
+@keyframes mymove {
+  from { 
+background-color: rgb(254,154,204);
+}
+  to {
+background-color: orange;
+}
+}
+
+
+
+h3{
+ 
+
+  margin-top: -20px;
+  margin-bottom: 200px;
+  margin-right: 600px;
+  margin-left: 600px;
+background-color: rgb(254,154,204);
+animation: mymove 5s  infinite;
+
+}
+
+
+p{
+font-size: 170%
+}
+
+pre{
+font-size: 150%
+}
+
