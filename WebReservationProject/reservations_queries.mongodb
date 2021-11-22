@@ -1,0 +1,9 @@
+//storing a reservation
+//check when a table is empty meaning no reservation at all
+use ('reservations')
+db.tables.find({book_status:{$exists:true}});
+//check to see if the time that customer pick is available (ex. check 6:00pm, 11/18/2021)
+
+//if return something -> that time is booked, customer has to pick another time
+//if return mothing -> that is time available, customer can book it
+//update the book_status with customer info
