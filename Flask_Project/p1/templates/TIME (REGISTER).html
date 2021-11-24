@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-------------------------------------- This is the head of the page---------------------------------------------------->
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME1.css') }}">
+
+</link>
+
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME2.css') }}">
+
+</link>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------- This is a body of the page---------------------------------------------------->
+<body class="w3-container">
+<h1 style="text-align:center;">
+RESERVATION PAGE (Continue)
+</h1>
+
+<h3 style="text-align:center;">
+<a href="{{ url_for('ACCOUNT') }}";><pre style="font-size:20px;text-align:right;">Profile</pre></a>
+ <pre style="font-size:35px;">Time slot (opening hours 05:00pm to 11:00pm) </pre>
+
+
+
+
+<p><strong>Hour in PM</strong></p>
+
+<select multiple size="2">
+
+
+          <option>   ...5...   </option>
+          <option>   ...6...   </option>
+          <option>  ...7...   </option>
+          <option>   ...8...   </option>
+          <option>   ...9...   </option>
+          <option>   ...10...   </option>
+   
+</select><br><br>
+
+
+<p><strong>MINUTES</strong></p>
+
+<select multiple size="2">
+
+
+          <option>   ...15...   </option>
+          <option>   ...30...   </option>
+          <option>  ...45...   </option>
+   
+</select><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+<!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
+<a href="{{ url_for('confirm1') }}" class="button">Reserve</a>
+
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

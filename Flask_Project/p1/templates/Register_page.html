@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
 
-<link rel="stylesheet" href="{{ url_for('static',     filename='css/REGISTER1.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',     filename='css/REGISTER1.css') }}">
 
-</link>
+  </link>
 
-<link rel="stylesheet" href="{{ url_for('static',     filename='css/REGISTER2.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',     filename='css/REGISTER2.css') }}">
 
-</link>
+  </link>
 </head>
 
 
@@ -31,66 +33,42 @@
 
 
 <!-------------------------------------- This is a body of the page---------------------------------------------------->
-<body >
-<h1 style="text-align:center;">
-RESERVATION PAGE
-</h1>
 
-<h3 style="text-align:center;">
- <pre style="font-size:35px;text-align:center;">INFORMATION</pre>
+<body class="w3-container">
+  <h1 style="text-align:center;">
+    RESERVATION PAGE
+  </h1>
 
+  <h3 style="text-align:center;">
+    <a href="{{ url_for('ACCOUNT') }}";><pre style="font-size:20px;text-align:right;">Profile</pre></a>
+    <pre style="font-size:35px;text-align:center;">INFORMATION</pre>
+    <form action="{{ url_for("register")}}" method="post">
+      <p><b>Date:</p>
+      <input type="date" id="resdate" name="rdate"></input>
+      <p><b>Party Size: </p>
+      <select multiple size="4" id="size" name="psize">
 
+        <option> ...1... </option>
+        <option> ...2... </option>
+        <option> ...3... </option>
+        <option> ...4... </option>
+        <option> ...5... </option>
+        <option> ...6... </option>
+        <option> ...7... </option>
+        <option> ...8... </option>
+        <option> ...9... </option>
+        <option> ...10... </option>
+        <option> ...11... </option>
+        <option> ...12... </option>
+      </select>
+      <br><br>
 
-<li>
-    <label >Date: </label>
-    <input  type="date" />
-</li><br>
+      <!---<p><b>Party Size: </p>
+      <input id="appt-time" type="time" name="appt-time" min="17:00" max="23:00"></input>
+      --->
 
-
-
-<p><strong>Please select the party size</strong></p>
-
-<select multiple size="4">
-
-          <option>   ...1...   </option>
-          <option>   ...2...   </option>
-          <option>  ...3...   </option>
-          <option>   ...4...   </option>
-          <option>   ...5...   </option>
-          <option>   ...6...   </option>
-          <option>  ...7...   </option>
-          <option>   ...8...   </option>
-          <option>   ...9...   </option>
-          <option>   ...10...   </option>
-          <option>  ...11...   </option>
-          <option>   ...12...   </option>
-</select><br><br><br><br>
-
-
-
-
-
-
-
-
-<form>
-  <label for="appt-time">Choose a reservation time (opening hours 05:00pm to 11:00pm): </label>
-  <input id="appt-time" type="time" name="appt-time"
-         min="17:00" max="23:00">
-  <span class="validity"></span>
-</form>
-
-
-
-
-
-
-
-
-<!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
-<a href="{{ url_for('confirm1') }}" class="button">Reserve</a>
-
-</h3>
+      <a href="{{ url_for('TIMEregister') }}" class="button">Continue</a>
+  </h3>
 
 
 
@@ -104,4 +82,5 @@ RESERVATION PAGE
 
 
 </body>
+
 </html>

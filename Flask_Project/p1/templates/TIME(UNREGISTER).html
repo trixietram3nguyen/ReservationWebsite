@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<!-------------------------------------- This is the head of the page---------------------------------------------------->
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME3.css') }}">
+
+</link>
+
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME4.css') }}">
+
+</link>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------- This is a body of the page---------------------------------------------------->
+<body >
+<h1 style="text-align:center;">
+RESERVATION PAGE (CONTINUE)
+</h1>
+
+<h3 style="text-align:center;">
+ <pre style="font-size:35px;text-align:center;">Time slot</pre>
+
+
+<p><strong>Hour in PM</strong></p>
+
+<select multiple size="2">
+
+
+          <option>   ...5...   </option>
+          <option>   ...6...   </option>
+          <option>  ...7...   </option>
+          <option>   ...8...   </option>
+          <option>   ...9...   </option>
+          <option>   ...10...   </option>
+   
+</select><br><br>
+
+
+<p><strong>MINUTES</strong></p>
+
+<select multiple size="2">
+
+
+          <option>   ...15...   </option>
+          <option>   ...30...   </option>
+          <option>  ...45...   </option>
+   
+</select><br><br><br><br>
+
+
+
+
+
+
+
+
+
+<!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
+<a href="{{ url_for('confirm3') }}" class="button">Reserve</a>
+
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

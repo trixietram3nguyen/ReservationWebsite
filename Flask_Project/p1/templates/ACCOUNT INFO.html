@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-------------------------------------- This is the head of the page---------------------------------------------------->
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/AccountCSS.css') }}">
+
+    </link>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------- This is a body of the page---------------------------------------------------->
+
+<body class="w3-container">
+
+
+
+<h3 style="text-align:center;">
+
+<p>Account Information</p>
+<li>
+    <label for="First_Name">First Name:</label>
+    <input name="first_name" id="First_Name" type="text" />
+</li><br><br>
+<li>
+    <label for="Name">Last Name:</label>
+    <input name="last_name" id="Last_Name" type="text" /> 
+
+</li><br><br>
+<li>
+    <label >Email: </label>
+    <input  type="email" />
+</li><br><br>
+
+<li>
+    <label >Password: </label>
+    <input  type="password" />
+</li><br><br>
+<li>
+    <label >Points earned: </label>
+    <input  type="text" />
+</li><br><br>
+
+<p>
+<a href="{{ url_for('login') }}" ><pre>Log out</pre></a>
+<a href="{{ url_for('register') }}" ><pre>Return</pre></a>
+</p>
+</h3>
+
+
+</body>
+</html>
