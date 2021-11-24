@@ -56,6 +56,11 @@ On the bottom left corner, just put the description of what you did/change there
 your branch to the main branch(step 3-8) before close the project or do it when you push 
 your stuff into your branch. Double check to see if your new stuffs are in 'main' branch.
 
+## Install PyMongo to connect with the database
 
+https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb 
+
+do the command line below in the shell
+python -m pip install pymongo
 
 

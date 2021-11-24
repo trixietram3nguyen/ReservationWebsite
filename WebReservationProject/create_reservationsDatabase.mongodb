@@ -1,5 +1,10 @@
 /*Create reservations database for a restaurant*/
 
+//drop the database
+//create for purpose of testing
+//use('reservations')
+//db.dropDatabase()
+
 const database = 'reservations';
 const customer_collections = 'customers';
 const table_collections = 'tables';
