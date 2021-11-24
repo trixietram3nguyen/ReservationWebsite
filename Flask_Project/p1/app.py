@@ -121,7 +121,7 @@ def ACCOUNT():
     return render_template("ACCOUNT INFO.html")
 
 
-#------------------------------------------This part from here to------------------------------------------------
+#------------------------------------------This part from here to---------------------------------123---------------
 
 # client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
 # db=client.reservations
