@@ -86,6 +86,19 @@ def unregister():
         return redirect("/confirm3", code=302)
     return render_template("Unregister_Reserve_page.html")
 
+@app.route("/TIMEregister")
+def TIMEregister():
+    return render_template("TIME (REGISTER).html")
+
+@app.route("/TIMEunregister")
+def TIMEunregister():
+    return render_template("TIME(UNREGISTER).html")
+
+
+@app.route("/ACCOUNT")
+def ACCOUNT():
+    return render_template("ACCOUNT INFO.html")
+
 
 if __name__ == '__main__':
     app.run()

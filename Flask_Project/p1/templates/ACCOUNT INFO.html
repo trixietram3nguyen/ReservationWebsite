@@ -6,8 +6,9 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-<link href="AccountCSS.css" rel="stylesheet">
-</link>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/AccountCSS.css') }}">
+
+    </link>
 </head>
 
 
@@ -57,17 +58,10 @@
     <label >Points earned: </label>
     <input  type="text" />
 </li><br><br>
-<li>
-    <label >Card Number (Optional): </label>
-    <input  type="text" />
-</li><br><br>
-<li>
-    <label >Phone Number (Optional): </label>
-    <input  type="text" />
-</li><br><br>
+
 <p>
-<a href="../Log in Page/LOGGIN PAGE.html" ><pre>Log out</pre></a>
-<a href="../Reservation page (Registered)/Register page.html" ><pre>Return</pre></a>
+<a href="{{ url_for('login') }}" ><pre>Log out</pre></a>
+<a href="{{ url_for('register') }}" ><pre>Return</pre></a>
 </p>
 </h3>
 

@@ -6,9 +6,12 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-<link href="TIME1.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME1.css') }}">
+
 </link>
-<link href="TIME2.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME2.css') }}">
+
 </link>
 </head>
 
@@ -35,7 +38,7 @@ RESERVATION PAGE (Continue)
 </h1>
 
 <h3 style="text-align:center;">
-<a href="../Account info/ACCOUNT INFO.html";><pre style="font-size:20px;text-align:right;">Profile</pre></a>
+<a href="{{ url_for('ACCOUNT') }}";><pre style="font-size:20px;text-align:right;">Profile</pre></a>
  <pre style="font-size:35px;">Time slot (opening hours 05:00pm to 11:00pm) </pre>
 
 
@@ -77,7 +80,7 @@ RESERVATION PAGE (Continue)
 
 
 <!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
-<a href="../Confirm reservation REGISTER/CONFIRM RESERVE REGISTER.html" class="button">Reserve</a>
+<a href="{{ url_for('confirm1') }}" class="button">Reserve</a>
 
 </h3>
 
