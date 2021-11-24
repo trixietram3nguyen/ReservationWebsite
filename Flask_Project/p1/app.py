@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, jsonify, url_for, flash, redirect
+import pymongo
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
@@ -85,6 +87,13 @@ def unregister():
               " " + date + " " + size + " " + time)
         return redirect("/confirm3", code=302)
     return render_template("Unregister_Reserve_page.html")
+
+client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
+db=client.customers
+collection = db.customer
+
+test = {"_id":12312312312, "name": "Tuan"}
+collection.insert_one(test)
 
 
 if __name__ == '__main__':
