@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify, url_for, flash, redirect
 import pymongo
+import json
 from pymongo import MongoClient
+from bson import Binary, Code
+from bson.json_util import loads
+
 
 app = Flask(__name__)
 
@@ -89,11 +93,17 @@ def unregister():
     return render_template("Unregister_Reserve_page.html")
 
 client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
-db=client.customers
-collection = db.customer
+db=client.reservations
+table_collection = db.tables
 
-test = {"_id":12312312312, "name": "Tuan"}
-collection.insert_one(test)
+# test = {"_id":12312312312, "name": "Tuan"}
+# collection.insert_one(test)
+result = table_collection.find({"book_status.date" : "11/18/2021"})
+all = table_collection.find({})
+# print(result.next()["table_number"])
+# print(result[0].book_status[0].time_booked[0].name)
+print(loads(json(result.next())))
+# print(json.loads(bson.json_util.dumps(data)))
 
 
 if __name__ == '__main__':
