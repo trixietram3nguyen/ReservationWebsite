@@ -1,0 +1,12 @@
+/*Create reservations database for a restaurant*/
+
+const database = 'reservations';
+const customer_collections = 'customers';
+const table_collections = 'tables';
+
+// Create a new database.
+use(database);
+
+// Create a new collection.
+db.createCollection(customer_collections);
+db.createCollection(table_collections);
