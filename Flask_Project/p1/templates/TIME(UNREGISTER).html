@@ -40,30 +40,34 @@ RESERVATION PAGE (CONTINUE)
 
 
 <p><strong>Hour in PM</strong></p>
-
-<select multiple size="2">
-
-
-          <option>   ...5...   </option>
-          <option>   ...6...   </option>
-          <option>  ...7...   </option>
-          <option>   ...8...   </option>
-          <option>   ...9...   </option>
-          <option>   ...10...   </option>
-   
-</select><br><br>
+<form action="{{ url_for("TIMEunregister")}}" method="post">
+    
+    <select multiple size="2" id="reservationhour" name="rhour">
 
 
-<p><strong>MINUTES</strong></p>
+        <option>   ...5...   </option>
+        <option>   ...6...   </option>
+        <option>  ...7...   </option>
+        <option>   ...8...   </option>
+        <option>   ...9...   </option>
+        <option>   ...10...   </option>
+ 
+    </select><br><br>
 
-<select multiple size="2">
+ <p><b>MINUTES </p>
+  <select multiple size="2" id="reservationminutes" name="rminutes">
 
 
-          <option>   ...15...   </option>
-          <option>   ...30...   </option>
-          <option>  ...45...   </option>
-   
-</select><br><br><br><br>
+        <option>   ...15...   </option>
+        <option>   ...30...   </option>
+        <option>  ...45...   </option>
+ 
+  </select><br><br><br><br>
+  <input type="submit" value="Log in"></a>
+<!---<p><b>Party Size: </p>
+<input id="appt-time" type="time" name="appt-time" min="17:00" max="23:00"></input>
+--->
+
 
 
 
@@ -74,7 +78,7 @@ RESERVATION PAGE (CONTINUE)
 
 
 <!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
-<a href="{{ url_for('confirm3') }}" class="button">Reserve</a>
+
 
 </h3>
 
