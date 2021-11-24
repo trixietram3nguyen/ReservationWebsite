@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
@@ -32,12 +34,13 @@
 
 <!-------------------------------------- This is a body of the page---------------------------------------------------->
 
-<body>
+<body class="w3-container">
   <h1 style="text-align:center;">
     RESERVATION PAGE
   </h1>
 
   <h3 style="text-align:center;">
+    <a href="{{ url_for('ACCOUNT') }}";><pre style="font-size:20px;text-align:right;">Profile</pre></a>
     <pre style="font-size:35px;text-align:center;">INFORMATION</pre>
     <form action="{{ url_for("register")}}" method="post">
       <p><b>Date:</p>
@@ -60,12 +63,11 @@
       </select>
       <br><br>
 
-      <p><b>Party Size: </p>
+      <!---<p><b>Party Size: </p>
       <input id="appt-time" type="time" name="appt-time" min="17:00" max="23:00"></input>
+      --->
 
-
-      <input type="submit" value="Reserve"></a>
-
+      <a href="{{ url_for('TIMEregister') }}" class="button">Continue</a>
   </h3>
 
 
