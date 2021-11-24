@@ -4,9 +4,12 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-<link href="TIME3.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME3.css') }}">
+
 </link>
-<link href="TIME4.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/TIME4.css') }}">
+
 </link>
 </head>
 
@@ -71,7 +74,7 @@ RESERVATION PAGE (CONTINUE)
 
 
 <!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
-<a href="../Confirm reservation UNREGISTER/CONFIRM RESERVE UNREGISTER.html" class="button">Reserve</a>
+<a href="{{ url_for('confirm3') }}" class="button">Reserve</a>
 
 </h3>
 
