@@ -107,10 +107,13 @@ def ACCOUNT():
 
 
 #------------------------------------------This part from here to------------------------------------------------
-
-# client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
-# db=client.reservations
-# table_collection = db.tables
+ 
+# To connect with the database
+client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
+# To use reservations database
+db = client.reservations
+# To use the tables collections
+table_collection = db.tables
 
 # # test = {"_id":12312312312, "name": "Tuan"}
 # # collection.insert_one(test)
