@@ -109,29 +109,29 @@ def ACCOUNT():
 #------------------------------------------This part from here to------------------------------------------------
  
 # To connect with the database
-client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
+# client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
 # To use reservations database
-db = client.reservations
+# db = client.reservations
 # To use the tables collections
-table_collection = db.tables
+# table_collection = db.tables
 
 # # test = {"_id":12312312312, "name": "Tuan"}
 # # collection.insert_one(test)
 # result = table_collection.find({"book_status.date" : "11/18/2021"})
-all = table_collection.find({"table_number":1})
+# all = table_collection.find({"table_number":1})
 # # print(result.next()["table_number"])
 # # print(result[0].book_status[0].time_booked[0].name)
 # #print(loads(json(result.next())))
 # # print(json.loads(bson.json_util.dumps(data)))
 
-print(all)
+# print(all)
 
-for info in all:
-    table = info
-    print(table)
+# for info in all:
+#     table = info
+#     print(table)
 
-print(type(table))
-print(table['table_number'])
+# print(type(table))
+# print(table['table_number'])
     
 # date = table['book_status']
 # print(type(date))
