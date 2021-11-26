@@ -33,7 +33,29 @@ def login():
         password = request.form.get("pname")
         #query database does username exist if it does go
         print(username + " " + password)
-        return redirect("/register", code=302)
+        # Check Sign-In
+        # check if email is valid (meaning available in the system)
+        query = customers.count({"email":username})  #count the info in the database
+        if query != 0:
+            # if yes -> check password
+            query = customers.find({"email":username},{"pass":1,"_id":0})
+
+            for result in query:
+                db_password = result['pass']
+            
+            if password == db_password:
+                # if password match -> proceed to log in
+                print("...Logging in")
+                return redirect("/register", code=302)
+            else:
+                # else promt incorrect password
+                print("Incorrect password!")
+                return redirect("/login", code=302)
+        else:
+            # else no -> promt user not valid
+            print("Incorrect email!")
+            return redirect("/login", code=302)
+        
     return render_template("LOGGIN_PAGE.html")
 
 
@@ -72,11 +94,46 @@ def signup():
         lname = request.form.get("lname")
         email = request.form.get("email")
         pass1 = request.form.get("pword1")
-        pass2 = request.form.get("pword2")
-        print(fname + " " + lname + " " + email + " " + pass1 + " " + pass2)
-        return redirect("/login", code=302)
+        query = customers.count({"email":email})  #count the info in the database
+        if query != 0:
+            # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
+             # print("There is " + str(query) + " result found. ")
+            print("Enter another email")
+            return redirect("/signup1", code=302)
+        else:
+            # Else no -> insert new customer info into the database
+            # result = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"}},upsert=True)
+            result = customers.insert({"first_name":fname, "last_name":lname, "email":email, "pass":pass1})
+            print("New customer inserted")
+            return redirect("/signup_conf", code=302)
     return render_template("SIGN_UP.html")
 
+@app.route("/signup_conf", methods=["GET", "POST"])
+def signup_conf():
+    
+
+    return render_template("SIGN_UP_CONFIRM.html"), {"Refresh": "5; /login"}
+
+@app.route("/signup1", methods=["GET", "POST"])
+def signup1():
+    if request.method == "POST":
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+        email = request.form.get("email")
+        pass1 = request.form.get("pword1")
+        query = customers.count({"email":email})  #count the info in the database
+        if query != 0:
+            # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
+             # print("There is " + str(query) + " result found. ")
+            print("Enter another email")
+            return redirect("/signup1", code=302)
+        else:
+            # Else no -> insert new customer info into the database
+            # result = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"}},upsert=True)
+            result = customers.insert({"first_name":fname, "last_name":lname, "email":email, "pass":pass1})
+            print("New customer inserted")
+            return redirect("/signup_conf", code=302)
+    return render_template("SIGN_UP_NEW_PASSWORD.html")
 
 @app.route("/unregister", methods=["GET", "POST"])
 def unregister():
@@ -124,11 +181,15 @@ def ACCOUNT():
 #------------------------------------------This part from here to------------------------------------------------
  
 # To connect with the database
-# client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
 # To use reservations database
-# db = client.reservations
+db = client.reservations
 # To use the tables collections
-# table_collection = db.tables
+tables = db.tables
+customers = db.customers
+# Add new customer
+# Check if the email customer enter for sign up already existed
+
 
 # # test = {"_id":12312312312, "name": "Tuan"}
 # # collection.insert_one(test)
