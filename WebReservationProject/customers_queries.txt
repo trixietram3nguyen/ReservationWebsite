@@ -3,7 +3,7 @@
 query = customers.count({"email":"lungrob10@yahoomail.com"})  #count the info in the database
 if query != 0:
     # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
-    print("There is " + str(query) + " result found. ")
+    # print("There is " + str(query) + " result found. ")
     print("Enter another email")
 else:
     # Else no -> insert new customer info into the database
@@ -12,3 +12,23 @@ else:
     print("New customer inserted")
 
 --------------------------------
+# Check Sign-In
+password = "Lungigi!"
+# check if email is valid (meaning available in the system)
+query = customers.count({"email":"lungrob10@yahoomail.com"})  #count the info in the database
+if query != 0:
+    # if yes -> check password
+    query = customers.find({"email":"lungrob10@yahoomail.com"},{"pass":1,"_id":0})
+
+    for result in query:
+        db_password = result['pass']
+    
+    if password == db_password:
+        # if password match -> proceed to log in
+        print("...Logging in")
+    else:
+        # else promt incorrect password
+        print("Incorrect password!")
+else:
+    # else no -> promt user not valid
+    print("Incorrect email!")
