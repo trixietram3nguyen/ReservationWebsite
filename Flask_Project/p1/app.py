@@ -61,7 +61,7 @@ def register():
         print(date)
         print(size)
         print(time)
-        return redirect("/confirm1", code=302)
+        return redirect("/TIMEregister", code=302)
     return render_template("Register_Page.html")
 
 
@@ -74,7 +74,7 @@ def signup():
         pass1 = request.form.get("pword1")
         pass2 = request.form.get("pword2")
         print(fname + " " + lname + " " + email + " " + pass1 + " " + pass2)
-        return redirect("/confirm2", code=302)
+        return redirect("/login", code=302)
     return render_template("SIGN_UP.html")
 
 
@@ -87,17 +87,32 @@ def unregister():
         date = request.form.get("date")
         size = request.form.get("size")
         time = request.form.get("appt-time")
-        print(fname + " " + lname + " " + email +
-              " " + date + " " + size + " " + time)
-        return redirect("/confirm3", code=302)
+        print(fname)
+        print(lname)
+        print(email)
+        print(date)
+        print(size)
+        print(time)
+
+        return redirect("/TIMEunregister", code=302)
     return render_template("Unregister_Reserve_page.html")
 
-@app.route("/TIMEregister")
+@app.route("/TIMEregister", methods=["GET", "POST"])
 def TIMEregister():
+    if request.method == "POST":
+        hour = request.form.get("rhour")
+        minutes = request.form.get("rminutes")
+        print(hour + " " + minutes)
+        return redirect("/confirm1", code=302)
     return render_template("TIME (REGISTER).html")
 
-@app.route("/TIMEunregister")
+@app.route("/TIMEunregister", methods=["GET", "POST"])
 def TIMEunregister():
+    if request.method == "POST":
+        hour = request.form.get("rhour")
+        minutes = request.form.get("rminutes")
+        print(hour + " " + minutes)
+        return redirect("/confirm3", code=302)
     return render_template("TIME(UNREGISTER).html")
 
 
