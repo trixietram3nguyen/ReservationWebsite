@@ -32,3 +32,31 @@ if query != 0:
 else:
     # else no -> promt user not valid
     print("Incorrect email!")
+
+--------------------------------
+# Update profile info
+email = "tx3rry@hotmail.com"
+points = 0
+preferred_diner = "2"
+card_num = "1234567890987654"
+exp_date = "09/24"
+cvv = "945"
+preferred_card = "yes"
+preferred_diner = "2"
+mailing_address = ["19678 Magnolia Ln","Houston","texas","77088"]
+billing = True         #default billing to be same as mailling address
+
+# check if billing address is the same as mailing address 
+#*****This will have to deal with check box
+if billing:
+    print("Same, use mailing address")
+    billing_address = mailing_address
+else:
+    print("Set new billing address")
+    billing_address = ["street","city","state","zip"]
+
+# update customer info base on their email since there is only 1 email for each profile
+customers.update_one({"email":"tx3rry@hotmail.com"},
+                {"$set":{"mailing_address":{"street":mailing_address[0],"city":mailing_address[1],"state":mailing_address[2],"zip":mailing_address[3]},
+                "billing_address":{"street":billing_address[0],"city":billing_address[1],"state":billing_address[2],"zip":billing_address[3]},
+                "points":points,"card":[{"card_number":card_num,"exp_date":exp_date,"cvv":cvv,"preferred":preferred_card}],"preferred_diner":preferred_diner}})
