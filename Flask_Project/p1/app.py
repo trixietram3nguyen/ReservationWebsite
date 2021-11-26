@@ -121,10 +121,13 @@ def ACCOUNT():
     return render_template("ACCOUNT INFO.html")
 
 
-#------------------------------------------This part from here to---------------------------------123---------------
-
+#------------------------------------------This part from here to------------------------------------------------
+ 
+# To connect with the database
 # client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
-# db=client.reservations
+# To use reservations database
+# db = client.reservations
+# To use the tables collections
 # table_collection = db.tables
 
 # # test = {"_id":12312312312, "name": "Tuan"}
@@ -136,8 +139,14 @@ def ACCOUNT():
 # #print(loads(json(result.next())))
 # # print(json.loads(bson.json_util.dumps(data)))
 
+# print(all)
+
 # for info in all:
 #     table = info
+#     print(table)
+
+# print(type(table))
+# print(table['table_number'])
     
 # date = table['book_status']
 # print(type(date))

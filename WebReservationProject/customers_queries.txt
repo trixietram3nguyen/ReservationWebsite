@@ -1,0 +1,34 @@
+# Add new customer
+# Check if the email customer enter for sign up already existed
+query = customers.count({"email":"lungrob10@yahoomail.com"})  #count the info in the database
+if query != 0:
+    # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
+    # print("There is " + str(query) + " result found. ")
+    print("Enter another email")
+else:
+    # Else no -> insert new customer info into the database
+    # result = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"}},upsert=True)
+    result = customers.insert({"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"})
+    print("New customer inserted")
+
+--------------------------------
+# Check Sign-In
+password = "Lungigi!"
+# check if email is valid (meaning available in the system)
+query = customers.count({"email":"lungrob10@yahoomail.com"})  #count the info in the database
+if query != 0:
+    # if yes -> check password
+    query = customers.find({"email":"lungrob10@yahoomail.com"},{"pass":1,"_id":0})
+
+    for result in query:
+        db_password = result['pass']
+    
+    if password == db_password:
+        # if password match -> proceed to log in
+        print("...Logging in")
+    else:
+        # else promt incorrect password
+        print("Incorrect password!")
+else:
+    # else no -> promt user not valid
+    print("Incorrect email!")

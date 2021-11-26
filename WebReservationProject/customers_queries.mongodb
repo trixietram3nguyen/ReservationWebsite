@@ -10,3 +10,12 @@ db.customers.insert({first_name:"<customer_firstname>",
 //Get the password that in the same collection of the email user entered
 //return the password, and exclude the _id
 db.customers.find({email:"<email user entered>"},{pass:1,_id:0});
+
+//Check if customer already available,
+//Yes -> do nothing -> error
+//No -> insert the new customer info
+
+//update profile
+db.customers.update({email:"tx3rry@hotmail.com"},
+                    {$set:{billing_address:{street:"19678 Magnolia Ln", city:"Houston", state:"Texas", zip:"77088"},
+                            points:"0",card:[{card_number:"1234567890123456",exp_date:"09/24",cvv:"498",preferred:"yes"}]}})
