@@ -14,6 +14,26 @@ background-color: pink;
 }
 }
 
+h4{
+ 
+  color:red;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 600px;
+  margin-left: 600px;
+border-style: dashed;
+animation: mymove 10s  infinite;
+}
+h1{
+ 
+  
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 600px;
+  margin-left: 600px;
+border-style: dashed;
+animation: mymove 10s  infinite;
+}
 
 h3{
  
