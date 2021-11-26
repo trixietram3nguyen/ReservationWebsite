@@ -10,3 +10,7 @@ db.customers.insert({first_name:"<customer_firstname>",
 //Get the password that in the same collection of the email user entered
 //return the password, and exclude the _id
 db.customers.find({email:"<email user entered>"},{pass:1,_id:0});
+
+//Check if customer already available,
+//Yes -> do nothing -> error
+//No -> insert the new customer info
