@@ -7,3 +7,9 @@ db.tables.find({book_status:{$exists:true}});
 //if return something -> that time is booked, customer has to pick another time
 //if return mothing -> that is time available, customer can book it
 //update the book_status with customer info
+
+// find the table(s) reserved with a certain date, return table(s) number
+db.tables.find({"book_status.date":"11/23/2021"},{"table_number":1,"_id":0})
+
+// insert the reserve date with available table
+db.tables.update({"table_number":3},{$set:{"book_status":[{"date":"11/21/2021"}]}},{upsert:true})
