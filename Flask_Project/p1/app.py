@@ -50,15 +50,77 @@ def login():
             else:
                 # else promt incorrect password
                 print("Incorrect password!")
-                return redirect("/login", code=302)
+                return redirect("/loginpass", code=302)
         else:
             # else no -> promt user not valid
             print("Incorrect email!")
-            return redirect("/login", code=302)
+            return redirect("/loginemail", code=302)
         
     return render_template("LOGGIN_PAGE.html")
 
+@app.route("/loginpass", methods=["GET", "POST"])
+def loginpass():
+    if request.method == "POST":
+        username = request.form.get("uname")
+        password = request.form.get("pname")
+        #query database does username exist if it does go
+        print(username + " " + password)
+        # Check Sign-In
+        # check if email is valid (meaning available in the system)
+        query = customers.count({"email":username})  #count the info in the database
+        if query != 0:
+            # if yes -> check password
+            query = customers.find({"email":username},{"pass":1,"_id":0})
 
+            for result in query:
+                db_password = result['pass']
+            
+            if password == db_password:
+                # if password match -> proceed to log in
+                print("...Logging in")
+                return redirect("/register", code=302)
+            else:
+                # else promt incorrect password
+                print("Incorrect password!")
+                return redirect("/loginpass", code=302)
+        else:
+            # else no -> promt user not valid
+            print("Incorrect email!")
+            return redirect("/loginemail", code=302)
+        
+    return render_template("LOGGIN_PAGE_PASSWORD.html")
+
+@app.route("/loginemail", methods=["GET", "POST"])
+def loginemail():
+    if request.method == "POST":
+        username = request.form.get("uname")
+        password = request.form.get("pname")
+        #query database does username exist if it does go
+        print(username + " " + password)
+        # Check Sign-In
+        # check if email is valid (meaning available in the system)
+        query = customers.count({"email":username})  #count the info in the database
+        if query != 0:
+            # if yes -> check password
+            query = customers.find({"email":username},{"pass":1,"_id":0})
+
+            for result in query:
+                db_password = result['pass']
+            
+            if password == db_password:
+                # if password match -> proceed to log in
+                print("...Logging in")
+                return redirect("/register", code=302)
+            else:
+                # else promt incorrect password
+                print("Incorrect password!")
+                return redirect("/loginpass", code=302)
+        else:
+            # else no -> promt user not valid
+            print("Incorrect email!")
+            return redirect("/loginemail", code=302)
+        
+    return render_template("LOGGIN_PAGE_EMAIL.html")
 @app.route("/confirm1")
 def confirm1():
     return render_template("CONFIRM_RESERVE_REGISTER.html")
