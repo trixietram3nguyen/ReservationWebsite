@@ -28,12 +28,12 @@ confirmation = id_generator()
 print("The confirmation code: " + confirmation)
 
 # Find if the date picked has been reserved
-query = tables.count({"book_status.date":"11/28/2021"})
+query = tables.count({"book_status.date":"11/19/2021"})
 # print(query)
 if query != 0:
     # If yes -> check the time picked has been reserved
     print("There are table(s) reserved with this date")
-    query = tables.find({"book_status.date":"11/20/2021"},{"table_number":1,"_id":0})
+    query = tables.find({"book_status.date":"11/19/2021"},{"table_number":1,"table_size":1,"_id":0})
     
     for result in query:
         table.append(result['table_number'])
@@ -76,3 +76,12 @@ else:
     # case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
     # case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
     # Reservation successfully booked, email the confirmation
+
+
+# Check table size to see which case we deal with
+# 5 cases to book
+# case 1: if party size is 4 or less use table any table but prioritize table for 4 first
+# case 2: if party size is 5 or less use table 1/2/7/8 but all available so automatically use 2
+# case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
+# case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
+# case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
