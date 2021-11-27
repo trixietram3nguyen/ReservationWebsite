@@ -1,15 +1,25 @@
 body {
   
-  background-color: pink;
+
+  background-image: url("Pho.jpg");
   
-}
-h2{
-border-style: dashed;
-background-color: rgb(224,255,255);
-}
-
-img {
-            display: inline;
-
+  
   }
-
+  
+  
+  h2{
+  border-style: dashed;
+  background-color: rgb(224,255,255);
+  }
+  
+  h1{
+  border-style: dashed;
+  background-color: rgb(224,255,255);
+  }
+  
+  h3{
+  border-style: dashed;
+  background-color: rgb(224,255,255);
+  }
+  
+  
