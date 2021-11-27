@@ -10,24 +10,69 @@ tables = db.tables
 # To use the customers collections
 customers = db.customers
 
-# Update profile info
-# update customer info base on their email since there is only 1 email for each profile
-email = "tx3rry@hotmail.com"
-points = 0
-preferred_diner = "2"
-card_num = "1234567890987654"
-exp_date = "09/24"
-cvv = "945"
-preferred_card = "yes"
-mail_street = "19678 Magnolia Ln"
-mail_city = "Houston"
-mail_state = "texas"
-mail_zip = "77088"
-billing = True          #default billing to be same as mailling address
+# Making a reservations
+# Need to generate random string with letters and numbers for the confirmation code
+import string
+import random
 
-# check if billing address is the same as mailing address
-if billing:
-    print("Same, use mailing address")
+# function to generate confirmation code
+def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+# info to book reservation
+table = []
+party_sz = 5
+# print("THE FIRST TABLE LENGTH\n")
+# print(len(table))
+confirmation = id_generator()
+print("The confirmation code: " + confirmation)
+
+# Find if the date picked has been reserved
+query = tables.count({"book_status.date":"11/28/2021"})
+# print(query)
+if query != 0:
+    # If yes -> check the time picked has been reserved
+    print("There are table(s) reserved with this date")
+    query = tables.find({"book_status.date":"11/20/2021"},{"table_number":1,"_id":0})
+    
+    for result in query:
+        table.append(result['table_number'])
+    
+    print(table)
+    print(len(table))
+        # If yes -> check what table(s) that reserved for chosen date and time
+            # If all tables reserved with the chosen time and date
+                # Promt choose different reservation time or date or both
+            # If not all tables reserved with the chosen time and date
+                # Book the reservation with available tables -> Insert the reservation into the database
+                # Reservation successfully booked, email the confirmation
+        # If no -> book the reservation -> insert the reservation into the data
+        # Reservation successfully booked, email the confirmation
 else:
-    print("Set new billing address")
-
+    # If no -> book the reservations -> insert the reservation into the database
+    print("This date can be reserve now")
+    # Check the table size before booking
+    # 5 cases to book
+    if party_sz <= 4:
+        print("table for 4 or less")
+        print("can reserve any table")
+    elif party_sz <= 5:
+        print("table for 5 or less")
+        print("reserve table for 5 and up. table 1/2/7/8")
+    elif party_sz <= 7:
+        print("table for 7 or less")
+        print("reserve table for 7 and up. table 1/7")
+    else:
+        print("Big party -> combine table")
+        if party_sz > 8:
+            print("table for 12 or less")
+            print("reserve table for 12 people only 1+2/7+8")
+        else:
+            print("table for 8")
+            print("reserve table for 8 and up. table 3+5/4+6/1+2/7+8")
+    # case 1: if party size is 4 or less use table any table but all available so automatically use 3
+    # case 2: if party size is 5 or less use table 1/2/7/8 but all available so automatically use 2
+    # case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
+    # case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
+    # case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
+    # Reservation successfully booked, email the confirmation
