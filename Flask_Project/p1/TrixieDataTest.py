@@ -21,13 +21,14 @@ def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
 
 # info to book reservation
 table = []
+party_sz = 5
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
 print("The confirmation code: " + confirmation)
 
 # Find if the date picked has been reserved
-query = tables.count({"book_status.date":"11/20/2021"})
+query = tables.count({"book_status.date":"11/28/2021"})
 # print(query)
 if query != 0:
     # If yes -> check the time picked has been reserved
@@ -52,6 +53,23 @@ else:
     print("This date can be reserve now")
     # Check the table size before booking
     # 5 cases to book
+    if party_sz <= 4:
+        print("table for 4 or less")
+        print("can reserve any table")
+    elif party_sz <= 5:
+        print("table for 5 or less")
+        print("reserve table for 5 and up. table 1/2/7/8")
+    elif party_sz <= 7:
+        print("table for 7 or less")
+        print("reserve table for 7 and up. table 1/7")
+    else:
+        print("Big party -> combine table")
+        if party_sz > 8:
+            print("table for 12 or less")
+            print("reserve table for 12 people only 1+2/7+8")
+        else:
+            print("table for 8")
+            print("reserve table for 8 and up. table 3+5/4+6/1+2/7+8")
     # case 1: if party size is 4 or less use table any table but all available so automatically use 3
     # case 2: if party size is 5 or less use table 1/2/7/8 but all available so automatically use 2
     # case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
