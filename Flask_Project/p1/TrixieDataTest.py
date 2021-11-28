@@ -85,3 +85,16 @@ else:
 # case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
 # case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
 # case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
+time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
+table = 2
+date = "11/29/2021"
+name = "TT"
+email = "TW"
+combined_tb = 0
+
+# Function to add reservation into database
+def addReservation(insert_tb, date, time, confirmation, name, size, email, combine_tb):
+    tables.update({"table_number":insert_tb},{"$push":{"book_status":{"date":date,"time":time,"confirmation":confirmation,"name":name,"party_size":size,"email":email,"combined_table":combine_tb}}})
+    print("Reservation inserted!")
+
+addReservation(table,date,time,confirmation,name,party_sz,email,combined_tb)
