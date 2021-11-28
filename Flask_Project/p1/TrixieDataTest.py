@@ -79,6 +79,8 @@ print(result[0])
 print("Combine table")
 print(result[1])
 
+
+
 # 5 cases to book
 if party_sz <= 4:
     print("table for 4 or less")
