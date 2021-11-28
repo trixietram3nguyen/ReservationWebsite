@@ -19,6 +19,11 @@ import random
 def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
+# Function to add reservation into database
+def addReservation(insert_tb, date, time, confirmation, name, size, email, combine_tb):
+    tables.update({"table_number":insert_tb},{"$push":{"book_status":{"date":date,"time":time,"confirmation":confirmation,"name":name,"party_size":size,"email":email,"combined_table":combine_tb}}})
+    print("Reservation inserted!")
+
 # info to book reservation
 table = []
 party_sz = 5
@@ -26,6 +31,15 @@ party_sz = 5
 # print(len(table))
 confirmation = id_generator()
 print("The confirmation code: " + confirmation)
+time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
+table = 2
+date = "11/29/2021"
+name = "TT"
+email = "TW"
+combined_tb = 0
+
+# Test addReservation function
+addReservation(table,date,time,confirmation,name,party_sz,email,combined_tb)
 
 # Find if the date picked has been reserved
 query = tables.count({"book_status.date":"11/19/2021"})
@@ -51,31 +65,44 @@ if query != 0:
 else:
     # If no -> book the reservations -> insert the reservation into the database
     print("This date can be reserve now")
-    # Check the table size before booking
-    # 5 cases to book
-    if party_sz <= 4:
-        print("table for 4 or less")
-        print("can reserve any table")
-    elif party_sz <= 5:
-        print("table for 5 or less")
-        print("reserve table for 5 and up. table 1/2/7/8")
-    elif party_sz <= 7:
-        print("table for 7 or less")
-        print("reserve table for 7 and up. table 1/7")
+    # Find out what table should the reservation add into
+    
+# Function to find out the table number to add the reservation, return the table will be insert and combine
+def tableInsert(size):
+    print("This table will be reserve")
+    table = [1,0]
+    return table
+
+result = tableInsert(7)
+print("Insert table")
+print(result[0])
+print("Combine table")
+print(result[1])
+
+# 5 cases to book
+if party_sz <= 4:
+    print("table for 4 or less")
+    print("can reserve any table")
+elif party_sz <= 5:
+    print("table for 5 or less")
+    print("reserve table for 5 and up. table 1/2/7/8")
+elif party_sz <= 7:
+    print("table for 7 or less")
+    print("reserve table for 7 and up. table 1/7")
+else:
+    print("Big party -> combine table")
+    if party_sz > 8:
+        print("table for 12 or less")
+        print("reserve table for 12 people only 1+2/7+8")
     else:
-        print("Big party -> combine table")
-        if party_sz > 8:
-            print("table for 12 or less")
-            print("reserve table for 12 people only 1+2/7+8")
-        else:
-            print("table for 8")
-            print("reserve table for 8 and up. table 3+5/4+6/1+2/7+8")
-    # case 1: if party size is 4 or less use table any table but all available so automatically use 3
-    # case 2: if party size is 5 or less use table 1/2/7/8 but all available so automatically use 2
-    # case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
-    # case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
-    # case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
-    # Reservation successfully booked, email the confirmation
+        print("table for 8")
+        print("reserve table for 8 and up. table 3+5/4+6/1+2/7+8")
+# case 1: if party size is 4 or less use table any table but all available so automatically use 3
+# case 2: if party size is 5 or less use table 1/2/7/8 but all available so automatically use 2
+# case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
+# case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
+# case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
+# Reservation successfully booked, email the confirmation
 
 
 # Check table size to see which case we deal with
@@ -85,16 +112,5 @@ else:
 # case 3: if party size is 7 or less use table 1/7 but both available so automatically use 1
 # case 4: if party size is 8 or less use table 3+5/4+6 but both available so automatically use 3+5
 # case 5: if party size is 12 or less use table 1+2/7+8 but both available so automatically use 1+2
-time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
-table = 2
-date = "11/29/2021"
-name = "TT"
-email = "TW"
-combined_tb = 0
 
-# Function to add reservation into database
-def addReservation(insert_tb, date, time, confirmation, name, size, email, combine_tb):
-    tables.update({"table_number":insert_tb},{"$push":{"book_status":{"date":date,"time":time,"confirmation":confirmation,"name":name,"party_size":size,"email":email,"combined_table":combine_tb}}})
-    print("Reservation inserted!")
 
-addReservation(table,date,time,confirmation,name,party_sz,email,combined_tb)
