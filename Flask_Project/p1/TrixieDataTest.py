@@ -83,8 +83,10 @@ if query == 0:
 else:
     # > 0 -> find out what table(s) available
     print("There are some table(s) available to book now.")
-    query = tables.find({"$or":[{"book_status.date":{"$ne":"11/29/2021"}},{"book_status.time":{"$ne":"6:00pm"}}]},{"table_number":1,"table_size":1,"_id":0})
+    query = tables.find({"$or":[{"book_status.date":{"$ne":"11/29/2021"}},{"book_status.time":{"$ne":"6:00pm"}}]},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
+    # print(query)
     for result in query:
+        print(result)
         table_num.append(result['table_number'])
         table_size.append(result['table_size'])
         
