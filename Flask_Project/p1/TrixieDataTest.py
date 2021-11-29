@@ -43,17 +43,20 @@ def tableInsert(tb_num, tb_size, party_sz):
         index = 0
         while (party_sz > tb_size[index]):
             index += 1
+            print("INDEX2")
             print(index)
+            
         
         # then take in that index
-        # use that index to get the table number, then store in tb_insert[0]
-        tb_insert[0] = tb_num[index]
-    # # for i in range(len(tb_size)-1):
-    # #     print("i:")
-    # #     print(i+1)
-    # #     print(tb_size[i+1])
-    # #     # if party_sz <= tb_size[i]:
-    # #     #     index = i
+        # check to see if there is table still available
+        if index >= len(tb_size):
+            # index out of range no more table for that party size
+            print("There are no available for party size you choose")
+            tb_insert[0] = 0
+        else:
+            # table still available for that party size
+            # use that index to get the table number, then store in tb_insert[0]
+            tb_insert[0] = tb_num[index]
     
     print("This table will be reserve")
     print(tb_insert)
@@ -68,13 +71,11 @@ def tableInsert(tb_num, tb_size, party_sz):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 6
+party_size = 5
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
-print("The confirmation code: " + confirmation)
 time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
-table = 2
 date = "11/29/2021"
 name = "TT"
 email = "TW"
@@ -108,7 +109,15 @@ else:
     best_table = tableInsert(table_num, table_size, party_size)
     print("The table will be reserve is")
     print(best_table)
-    # Make reservation -> Insert reserve info into database
+    # Check to see if table still available to reserve for the particular party size
+    if(best_table[0] == 0):
+        # No more availabilty for the chosen party size
+        print("NO MORE TABLE! Pick another size/time/date.")
+    else:
+        # Make reservation -> Insert reserve info into database
+        # insert table is best_table[0], combined table is best_table[1]
+        addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+        print("The confirmation code: " + confirmation)
 
 
 
