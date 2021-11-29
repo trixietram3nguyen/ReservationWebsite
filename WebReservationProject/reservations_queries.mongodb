@@ -19,3 +19,7 @@ db.tables.update({"table_number":6},{$push:{"book_status":{"date":"11/22/2021","
 //find tables with specific time and date
 db.tables.find({$and:[{"book_status.date":"11/22/2021"},{"book_status.time":"6:00pm"}]},{"book_status.confirmation":1})
 
+//find and print out the sort out the result, auto in increment order
+db.tables.find({$or:[{"book_status.date":"11/28/2021"},{"book_status.time":"6:00pm"}]},{"table_number":1}).sort({"table_size":1})
+
+
