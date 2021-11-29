@@ -45,6 +45,8 @@ def tableInsert(tb_num, tb_size, party_sz):
             index += 1
             print("INDEX2")
             print(index)
+            if (index == len(tb_size)):
+                break
             
         
         # then take in that index
