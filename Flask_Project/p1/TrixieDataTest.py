@@ -25,7 +25,8 @@ def addReservation(insert_tb, date, time, confirmation, name, size, email, combi
     print("Reservation inserted!")
 
 # info to book reservation
-table = []
+table_num = []
+table_size = []
 party_sz = 5
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
@@ -39,21 +40,25 @@ email = "TW"
 combined_tb = 0
 
 # Test addReservation function
-addReservation(table,date,time,confirmation,name,party_sz,email,combined_tb)
+# addReservation(table,date,time,confirmation,name,party_sz,email,combined_tb)
 
 # Find if the date picked has been reserved
-query = tables.count({"book_status.date":"11/19/2021"})
+# Count the tables that don't have the picked date reserve
+query = tables.count({"book_status.date":"11/28/2021"})
 # print(query)
+# If count == 0 then there is no tables to reserve, pick another day
 if query != 0:
     # If yes -> check the time picked has been reserved
     print("There are table(s) reserved with this date")
-    query = tables.find({"book_status.date":"11/19/2021"},{"table_number":1,"table_size":1,"_id":0})
+    query = tables.find({"book_status.date":{"$ne":"11/28/2021"}},{"table_number":1,"table_size":1,"_id":0})
     
     for result in query:
-        table.append(result['table_number'])
+        table_num.append(result['table_number'])
+        table_size.append(result['table_size'])
     
-    print(table)
-    print(len(table))
+    print(table_num)
+    print(table_size)
+    print(len(table_num))
         # If yes -> check what table(s) that reserved for chosen date and time
             # If all tables reserved with the chosen time and date
                 # Promt choose different reservation time or date or both
