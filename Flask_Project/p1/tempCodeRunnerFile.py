@@ -1,3 +1,2 @@
-#for info in result:
-#     info = info
-# print(info)
+if party_sz <= tb_size[i]:
+        #     index = i
