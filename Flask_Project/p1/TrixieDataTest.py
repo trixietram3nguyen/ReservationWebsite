@@ -29,24 +29,35 @@ def tableInsert(tb_num, tb_size, party_sz):
     print("Length")
     print(len(tb_size))
     #array of table, table[0] is the insert table, table[1] is combine table
-    table = []
+    tb_insert = [0,0]
     
     if party_sz >= 8:
-        table[1] = 0
-        table[0] = 1
-        print(table[1])
+        tb_insert[0] = 1
+        tb_insert[1] = 0
+        print(tb_insert[1])
     else:
-        # party size less than 8, no table need to be combine
-        table[1] = 0
-    # for i in range(len(tb_size)-1):
-    #     print("i:")
-    #     print(i+1)
-    #     print(tb_size[i+1])
-    #     # if party_sz <= tb_size[i]:
-    #     #     index = i
+        # party size less than 8, no table need to be combine, so tb_insert[1] will be 0 always
+        tb_insert[1] = 0
+        
+        # loop through the table size array until find a table size that is >= party size
+        index = 0
+        while (party_sz > tb_size[index]):
+            index += 1
+            print(index)
+        
+        # then take in that index
+        # use that index to get the table number, then store in tb_insert[0]
+        tb_insert[0] = tb_num[index]
+    # # for i in range(len(tb_size)-1):
+    # #     print("i:")
+    # #     print(i+1)
+    # #     print(tb_size[i+1])
+    # #     # if party_sz <= tb_size[i]:
+    # #     #     index = i
     
     print("This table will be reserve")
-    return table
+    print(tb_insert)
+    return tb_insert
 
 # result = tableInsert(7)
 # print("Insert table")
@@ -57,7 +68,7 @@ def tableInsert(tb_num, tb_size, party_sz):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 8
+party_size = 6
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
@@ -86,7 +97,7 @@ else:
     query = tables.find({"$or":[{"book_status.date":{"$ne":"11/29/2021"}},{"book_status.time":{"$ne":"6:00pm"}}]},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
     # print(query)
     for result in query:
-        print(result)
+        #print(result)
         table_num.append(result['table_number'])
         table_size.append(result['table_size'])
         
