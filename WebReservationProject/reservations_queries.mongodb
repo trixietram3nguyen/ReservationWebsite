@@ -13,7 +13,9 @@ db.tables.find({"book_status.date":"11/23/2021"},{"table_number":1,"table_size":
 
 // insert a resrvation to the database
 //db.tables.update({"table_number":3},{$set:{"book_status":[{"date":"11/21/2021"}]}},{upsert:true})
-db.tables.update({"table_number":6},{$push:{"book_status":{"date":"11/22/2021","time":["6:00pm","6:15pm","6:30pm","6:45pm"],"confirmation":"e4r56o","name":"QQ","part_size":"3","email":"VB","combined_table":"0"}}})
+db.tables.update({"table_number":6},{$push:{"book_status":{"date":"11/22/2021","time":["6:00pm","6:15pm","6:30pm","6:45pm"],"confirmation":"e4r56o","name":"QQ","party_size":3,"email":"VB","combined_table":0}}})
 
 //using and operation
+//find tables with specific time and date
 db.tables.find({$and:[{"book_status.date":"11/22/2021"},{"book_status.time":"6:00pm"}]},{"book_status.confirmation":1})
+
