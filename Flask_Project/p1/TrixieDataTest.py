@@ -109,7 +109,7 @@ party_size = 8
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
-time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
+time = ["10:00pm","10:15pm","10:30pm","10:45pm"]
 date = "11/30/2021"
 name = "TT"
 email = "TW"
@@ -124,20 +124,41 @@ pairs = [[3,5,8],[4,6,8],[1,2,12],[7,8,12]]
 # New algorithm
 # Check if date picked has been reserve
 query = tables.count({"book_status.date":date})
-print(query)
+# print(query)
 if query != 0:
     # Yes -> Check if time picked has been reserve
     print("There are some reservations booked with this date. Check for time!")
+    time_booked = 0
+    for t in time:
+        print(t)
+        query = tables.count({"book_status.time":t})
+        print(query)
+        time_booked += query
+    print(time_booked)
 
+    if (time_booked != 0):
+        print("Check for available tables during this time!")
         # Yes -> Check if there still tables available
-            # Yes -> Get the best fit table.
-            # Make the reservations, insert into database
+            # Yes -> Get the list of available tables
+            
             # No -> Ask user to book different time/date
+    else:
         # No -> Make the reservations, insert into database
+        print("This time is available to book!")
+        print("Making reservation...")
+        # No time in the array were book at all, so we can choose anytime from the array to retrieve the available tables
+        query = tables.find({"book_status.date":{"$ne":time[0]}},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
+        for result in query:
+        #print(result)
+            table_num.append(result['table_number'])
+            table_size.append(result['table_size'])
+        
+        print("Print out the list of tables")
+        print(table_num)
+        print(table_size)
 else:
-    # No -> Find out the optimal table to book for the reservation
+    # No -> Find the available tables
     print("This reservation can be book")
-    # Find the available table
     query = tables.find({"book_status.date":{"$ne":date}},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
     for result in query:
         #print(result)
@@ -148,22 +169,26 @@ else:
     print(table_num)
     print(table_size)
 
-    # Find out what table best fit for the party size
-    best_table = tableInsert(table_num, table_size, party_size, pairs)
-    print("The table will be reserve is")
-    print(best_table)
 
-    # Check to see if table will need to be combine
-    if (best_table[1] == 0):
-        # No -> only call the addReservation function once
-        print("Add reservation for table " + str(best_table[0]))
-        addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
-    else:
-        # Yes -> call the addReservation function twice, flip the table insert and table combine for the second call
-        print("Add reservation for table " + str(best_table[0]))
-        addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
-        print("Add reservation for table " + str(best_table[1]))
-        addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
+# Find out what table best fit for the party size
+best_table = tableInsert(table_num, table_size, party_size, pairs)
+print("The table will be reserve is")
+print(best_table)
+
+# Check to see if table will need to be combine
+if (best_table[1] == 0):
+    # No -> only call the addReservation function once
+    print("Add reservation for table " + str(best_table[0]))
+    # Reserving the table
+    addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+else:
+    # Yes -> call the addReservation function twice, flip the table insert and table combine for the second call
+    print("Add reservation for table " + str(best_table[0]))
+    # Reserving the table
+    addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+    # Reserving the table
+    print("Add reservation for table " + str(best_table[1]))
+    addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
 
 
 
