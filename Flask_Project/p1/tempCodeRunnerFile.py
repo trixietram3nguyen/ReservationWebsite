@@ -1,2 +1,2 @@
-if party_sz <= tb_size[i]:
-        #     index = i
+print("INDEX2")
+                print(index)

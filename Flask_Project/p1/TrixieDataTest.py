@@ -50,23 +50,35 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
         if len(available) == 0:
             # If there is nothing added in available, meaning no table are able to combine
             print("No tables can be combine at this time")
+            print("There are no available for party size you choose")
             tb_insert[0] = 0
             tb_insert[1] = 0
         else:
             # There are tables available to combine
             # loop through the pairs list to find the pair of tables that can accommondate the desired size
             index = 0
+            print(available[index][2])
+            print(party_sz)
             while (party_sz > available[index][2]):
                 index += 1
-                # print("INDEX2")
-                # print(index)
-                if (index == len(tb_size)):
+                print("INDEX2")
+                print(index)
+                if (index == len(available)):
                     break
             
-            print("INDEX")
-            print(index)
-            tb_insert[0] = available[index][0]
-            tb_insert[1] = available[index][1]
+            # then take in that index
+            # check to see if there is table still available
+            if index >= len(available):
+                # index out of range no more table for that party size
+                print("There are no available for party size you choose")
+                tb_insert[0] = 0
+            else:
+                # table still available for that party size
+                # use that index to get the insert table number and combine table number
+                print("INDEX")
+                print(index)
+                tb_insert[0] = available[index][0]
+                tb_insert[1] = available[index][1]
     else:
         # party size less than 8, no table need to be combine, so tb_insert[1] will be 0 always
         tb_insert[1] = 0
@@ -75,8 +87,8 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
         index = 0
         while (party_sz > tb_size[index]):
             index += 1
-            # print("INDEX2")
-            # print(index)
+            print("INDEX2")
+            print(index)
             if (index == len(tb_size)):
                 break
             
@@ -105,12 +117,12 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 8
+party_size = 10
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
 time = ["10:00pm","10:15pm","10:30pm","10:45pm"]
-date = "11/30/2021"
+date = "11/29/2021"
 name = "TT"
 email = "TW"
 combined_tb = 0
@@ -130,18 +142,35 @@ if query != 0:
     print("There are some reservations booked with this date. Check for time!")
     time_booked = 0
     for t in time:
-        print(t)
+        #print(t)
         query = tables.count({"book_status.time":t})
-        print(query)
+        #print(query)
         time_booked += query
     print(time_booked)
 
     if (time_booked != 0):
         print("Check for available tables during this time!")
         # Yes -> Check if there still tables available
-            # Yes -> Get the list of available tables
+        # Check if there are still tables that does not have that date reserve
+        query = tables.count({"book_status.date":date})
+        if query != 0:
+            # Yes -> Find the table(s) that don't have that date reserve
+            print("There are still available table on " + date)
+            query = tables.find({"book_status.date":{"$ne":date}},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
+            for result in query:
+            #print(result)
+                table_num.append(result['table_number'])
+                table_size.append(result['table_size'])
             
-            # No -> Ask user to book different time/date
+            print("Print out the list of tables")
+            print(table_num)
+            print(table_size)
+        else:
+            # No -> Retrieve all the table info and check with the time so see if anything available
+            print("There are no more table available on " + date)
+                # Yes -> Get the list of available tables
+                
+                # No -> Ask user to book different time/date
     else:
         # No -> Make the reservations, insert into database
         print("This time is available to book!")
@@ -175,20 +204,27 @@ best_table = tableInsert(table_num, table_size, party_size, pairs)
 print("The table will be reserve is")
 print(best_table)
 
-# Check to see if table will need to be combine
-if (best_table[1] == 0):
-    # No -> only call the addReservation function once
-    print("Add reservation for table " + str(best_table[0]))
-    # Reserving the table
-    addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
-else:
-    # Yes -> call the addReservation function twice, flip the table insert and table combine for the second call
-    print("Add reservation for table " + str(best_table[0]))
-    # Reserving the table
-    addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
-    # Reserving the table
-    print("Add reservation for table " + str(best_table[1]))
-    addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
+# # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
+# if (best_table[1] == 0):
+#     # Yes -> Check if best_table[0] is 0
+#     if (best_table[0] == 0):
+#         # Yes -> No more table to reserve
+#         print("Please pick another time/date.")
+#     else:
+#         # No -> There are table to reserve
+#         # Call the addReservation function once
+#         print("Add reservation for table " + str(best_table[0]))
+#         # Reserving the table
+#         addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+# else:
+#     # No -> Table need to be combine
+#     # Call the addReservation function twice, flip the table insert and table combine for the second call
+#     print("Add reservation for table " + str(best_table[0]))
+#     # Reserving the table
+#     addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+#     # Reserving the table
+#     print("Add reservation for table " + str(best_table[1]))
+#     addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
 
 
 
