@@ -105,7 +105,7 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 10
+party_size = 8
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
@@ -135,7 +135,7 @@ if query != 0:
             # No -> Ask user to book different time/date
         # No -> Make the reservations, insert into database
 else:
-    # No -> Make the reservations, insert into database
+    # No -> Find out the optimal table to book for the reservation
     print("This reservation can be book")
     # Find the available table
     query = tables.find({"book_status.date":{"$ne":date}},{"table_number":1,"table_size":1,"_id":0}).sort("table_size")
@@ -152,6 +152,18 @@ else:
     best_table = tableInsert(table_num, table_size, party_size, pairs)
     print("The table will be reserve is")
     print(best_table)
+
+    # Check to see if table will need to be combine
+    if (best_table[1] == 0):
+        # No -> only call the addReservation function once
+        print("Add reservation for table " + str(best_table[0]))
+        addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+    else:
+        # Yes -> call the addReservation function twice, flip the table insert and table combine for the second call
+        print("Add reservation for table " + str(best_table[0]))
+        addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
+        print("Add reservation for table " + str(best_table[1]))
+        addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
 
 
 
