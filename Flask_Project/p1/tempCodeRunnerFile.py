@@ -1,2 +1,2 @@
-print("INDEX2")
-                print(index)
+print(table_num)
+        print(table_size)

@@ -117,16 +117,15 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 10
+party_size = 2
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
-time = ["10:00pm","10:15pm","10:30pm","10:45pm"]
-date = "11/29/2021"
+time = ["5:00pm","5:15pm","5:30pm","5:45pm"]
+date = "11/28/2021"
 name = "TT"
 email = "TW"
 combined_tb = 0
-checking = []
 # pairs to store the tables that can be combine and the size of it [0],[1] tables number, [2] combined size
 pairs = [[3,5,8],[4,6,8],[1,2,12],[7,8,12]]
 
@@ -152,7 +151,7 @@ if query != 0:
         print("Check for available tables during this time!")
         # Yes -> Check if there still tables available
         # Check if there are still tables that does not have that date reserve
-        query = tables.count({"book_status.date":date})
+        query = tables.count({"book_status.date":{"$ne":date}})
         if query != 0:
             # Yes -> Find the table(s) that don't have that date reserve
             print("There are still available table on " + date)
@@ -166,11 +165,73 @@ if query != 0:
             print(table_num)
             print(table_size)
         else:
-            # No -> Retrieve all the table info and check with the time so see if anything available
-            print("There are no more table available on " + date)
-                # Yes -> Get the list of available tables
-                
-                # No -> Ask user to book different time/date
+            # No -> Retrieve all the table info and check with date and time so see if anything available
+            all_tb = []
+            tb_info = []
+            print("All tables have reservations on " + date + " and " + time[0])
+            query = tables.find({},{"table_number":1,"table_size":1,"book_status.date":1,"book_status.time":1,"_id":0}).sort("table_size")
+            for result in query:
+                #print(result)
+                #print(type(result))
+                all_tb.append(result)
+            
+            # #print(type(all_tb))
+            # tb_info = all_tb[0]
+            # #print(tb_info)
+            # #print(type(tb_info))
+            # status = tb_info['book_status']
+            # #print(type(status))
+            # #print(type(status[0]))
+            # reserved = status[0]
+            # #print(type(reserved))
+            # print(type(reserved['date']))
+
+            # Get the list of available tables
+            for table_info in all_tb:
+                table_number = table_info['table_number']
+                table_sz = table_info['table_size']
+                status = table_info['book_status']
+                # print(tb_info)
+                # print("I'M HERE!!!!!\n")
+                # status = tb_info['book_status']
+                print(table_number)
+                print(table_sz)
+                print(status)
+                for s in status:
+                    reserved_time = s['time']
+                    reserved_date = s['date']
+                    print(reserved_date)
+                    print(reserved_time)
+                    
+                    if date != reserved_date:
+                        # That table is available to reserve
+                        # Add to table_num and table_size list
+                        if table_number not in table_num:
+                            table_num.append(table_number)
+                            table_size.append(table_sz)
+                        print("Print out the list of tables")
+                        print(table_num)
+                        print(table_size)
+                        print("I'M HERE********\n")
+                    else:
+                        # That table has the same date reserve so check the time
+                        time_available = True
+                        for t in time:
+                            if t in reserved_time:
+                                time_available = False
+                                break
+                        if time_available:
+                            # That table is available to reserve
+                            # Add to table_num and table_size list
+                            if table_number not in table_num:
+                                table_num.append(table_number)
+                                table_size.append(table_sz)
+                            print("Print out the list of tables")
+                            print(table_num)
+                            print(table_size)
+                            print("I'M HERE^^^^^^^^^\n")
+                        else:
+                            print("No more availability. Pick another time/date.")
     else:
         # No -> Make the reservations, insert into database
         print("This time is available to book!")
@@ -200,9 +261,9 @@ else:
 
 
 # Find out what table best fit for the party size
-best_table = tableInsert(table_num, table_size, party_size, pairs)
-print("The table will be reserve is")
-print(best_table)
+# best_table = tableInsert(table_num, table_size, party_size, pairs)
+# print("The table will be reserve is")
+# print(best_table)
 
 # # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
 # if (best_table[1] == 0):
