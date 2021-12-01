@@ -60,3 +60,12 @@ customers.update_one({"email":"tx3rry@hotmail.com"},
                 {"$set":{"mailing_address":{"street":mailing_address[0],"city":mailing_address[1],"state":mailing_address[2],"zip":mailing_address[3]},
                 "billing_address":{"street":billing_address[0],"city":billing_address[1],"state":billing_address[2],"zip":billing_address[3]},
                 "points":points,"card":[{"card_number":card_num,"exp_date":exp_date,"cvv":cvv,"preferred":preferred_card}],"preferred_diner":preferred_diner}})
+
+--------------------------------
+# Get customer name from email
+query = customers.find({"email":"rtq.nguyen12@gmail.com"},{"first_name":1,"last_name":1,"_id":0})
+for result in query:
+    print(result)
+
+name = result['first_name'] + " " + result['last_name']
+print(name)
