@@ -117,11 +117,11 @@ def tableInsert(tb_num, tb_size, party_sz,pairs):
 # info to book reservation
 table_num = []
 table_size = []
-party_size = 2
+party_size = 5
 # print("THE FIRST TABLE LENGTH\n")
 # print(len(table))
 confirmation = id_generator()
-time = ["6:00pm","6:15pm","6:30pm","6:45pm","7:00pm","7:15pm"]
+time = ["8:00pm","8:15pm","8:30pm","8:45pm","8:00pm","8:15pm"]
 date = "11/29/2021"
 name = "TT"
 email = "TW"
