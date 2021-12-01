@@ -10,10 +10,4 @@ tables = db.tables
 # To use the customers collections
 customers = db.customers
 
-# Get customer name from email
-query = customers.find({"email":"rtq.nguyen12@gmail.com"},{"first_name":1,"last_name":1,"_id":0})
-for result in query:
-    print(result)
 
-name = result['first_name'] + " " + result['last_name']
-print(name)

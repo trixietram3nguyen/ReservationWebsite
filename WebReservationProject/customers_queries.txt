@@ -69,3 +69,12 @@ for result in query:
 
 name = result['first_name'] + " " + result['last_name']
 print(name)
+
+--------------------------------
+# Point system update
+point = 5
+query = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"points":point}})
+
+--------------------------------
+# Adding reservation confirmation into the customer info
+query = db.customers.update({"email":"tx3rry@hotmail.com"},{"$push":{"confirmation":confirmation}})
