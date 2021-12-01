@@ -154,20 +154,20 @@ def confirm3():
 def register():
     if request.method == "POST":
         date = request.form.get("rdate")
-        print(date)
+        #print(date)
         date_year= date[0:4]
         date_month= date[5:7]
         date_day= date[8:10]
         date=date_month+"/"+date_day+"/"+date_year
-        print(date)
+        #print(date)
         size = int(request.form.get("psize"))
-        print(type(size))
+        #print(type(size))
         time_input = request.form.get("appt-time")
-        print(time_input)
+        #print(time_input)
         time_hour = int(time_input[0:2]) - 12
         time_minute = time_input[3:5]
         time_input = str(time_hour)+":"+time_minute+"pm"
-        print(time_input)
+        #print(time_input)
         # Making a reservations
         # Need to generate random string with letters and numbers for the confirmation code
         import string
@@ -275,7 +275,13 @@ def register():
         global current_user
         email = current_user
         print(email)
-        name = "TT" #Add database query Trixie
+        # Query to get the customer name from the email
+        query = customers.find({"email":email},{"first_name":1,"last_name":1,"_id":0})
+        for result in query:
+            print(result)
+
+        name = result['first_name'] + " " + result['last_name']
+        print(name) 
 
         # pairs to store the tables that can be combine and the size of it [0],[1] tables number, [2] combined size
         pairs = [[3,5,8],[4,6,8],[1,2,12],[7,8,12]]
@@ -498,55 +504,7 @@ db = client.reservations
 # To use the tables collections
 tables = db.tables
 customers = db.customers
-# Add new customer
-# Check if the email customer enter for sign up already existed
 
-
-# # test = {"_id":12312312312, "name": "Tuan"}
-# # collection.insert_one(test)
-# result = table_collection.find({"book_status.date" : "11/18/2021"})
-# all = table_collection.find({"table_number":1})
-# # print(result.next()["table_number"])
-# # print(result[0].book_status[0].time_booked[0].name)
-# #print(loads(json(result.next())))
-# # print(json.loads(bson.json_util.dumps(data)))
-
-# print(all)
-
-# for info in all:
-#     table = info
-#     print(table)
-
-# print(type(table))
-# print(table['table_number'])
-    
-# date = table['book_status']
-# print(type(date))
-# print(date[0])
-
-# print("hello")
-# print(type(date[0]))
-
-# print("more")
-# status = date[0]
-# print(type(status))
-# print(status['time_booked'])
-
-# time_booked = status['time_booked']
-# print("blah blah blah")
-# print(type(time_booked[0]))
-# print(time_booked[0])
-
-# name = time_booked[0]['name']
-# print("the name")
-# print(name)
-
-# #print(type(all))
-
-# # if (table['table_position'] == "inside"):
-# #     print(table['table_position'])
-# # else:
-# #     print("Error")
 
 #-------------------------------------------here is my connection database stuff, so don't delete it------------
 
