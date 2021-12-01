@@ -249,55 +249,7 @@ db = client.reservations
 # To use the tables collections
 tables = db.tables
 customers = db.customers
-# Add new customer
-# Check if the email customer enter for sign up already existed
 
-
-# # test = {"_id":12312312312, "name": "Tuan"}
-# # collection.insert_one(test)
-# result = table_collection.find({"book_status.date" : "11/18/2021"})
-# all = table_collection.find({"table_number":1})
-# # print(result.next()["table_number"])
-# # print(result[0].book_status[0].time_booked[0].name)
-# #print(loads(json(result.next())))
-# # print(json.loads(bson.json_util.dumps(data)))
-
-# print(all)
-
-# for info in all:
-#     table = info
-#     print(table)
-
-# print(type(table))
-# print(table['table_number'])
-    
-# date = table['book_status']
-# print(type(date))
-# print(date[0])
-
-# print("hello")
-# print(type(date[0]))
-
-# print("more")
-# status = date[0]
-# print(type(status))
-# print(status['time_booked'])
-
-# time_booked = status['time_booked']
-# print("blah blah blah")
-# print(type(time_booked[0]))
-# print(time_booked[0])
-
-# name = time_booked[0]['name']
-# print("the name")
-# print(name)
-
-# #print(type(all))
-
-# # if (table['table_position'] == "inside"):
-# #     print(table['table_position'])
-# # else:
-# #     print("Error")
 
 #-------------------------------------------here is my connection database stuff, so don't delete it------------
 
