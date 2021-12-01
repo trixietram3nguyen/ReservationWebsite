@@ -1,15 +1,5 @@
-import pymongo
-from pymongo import MongoClient
 
-# To connect with the database
-client = MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.jqrjj.mongodb.net/customers?retryWrites=true&w=majority")
-# To use reservations database
-db = client.reservations
-# To use the tables collections
-tables = db.tables
-# To use the customers collections
-customers = db.customers
-
+---------------------------------------------------
 # Making a reservations
 # Need to generate random string with letters and numbers for the confirmation code
 import string
@@ -210,5 +200,4 @@ else:
         # Reserving the table
         print("\nAdd reservation for table " + str(best_table[1]))
         addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
-
 
