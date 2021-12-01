@@ -12,6 +12,6 @@ const table_collections = 'tables';
 // Create a new database.
 use(database);
 
-// Create a new collection.
+// Create a new collections.
 db.createCollection(customer_collections);
 db.createCollection(table_collections);
