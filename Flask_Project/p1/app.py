@@ -449,7 +449,7 @@ def signup1():
             result = customers.insert({"first_name":fname, "last_name":lname, "email":email, "pass":pass1})
             print("New customer inserted")
             return redirect("/signup_conf", code=302)
-    return render_template("SIGN_UP_NEW_PASSWORD.html")
+    return render_template("SIGN_UP_Error_SameEmail.html")
 
 @app.route("/unregister", methods=["GET", "POST"])
 def unregister():
