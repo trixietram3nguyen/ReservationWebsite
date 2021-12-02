@@ -35,21 +35,27 @@
     <h2>
         <center>Made by Thai Nguyen, Erik, and TraXiMie
     </h2>
-
     <h3 style="text-align:center;">
     <form action="{{ url_for("login")}}" method="post">
-        <p><b>User Name:</p>
+        <p><b>Email:</p>
         <input type="text" id="username" name="uname" required></input>
         <p><b>Password: </p>
-        <input type="text" id="password" name="pname" required></input>
+        <input type="password" id="password" name="pname" required></input>
         <br><br>
         <input type="submit" value="Log in"></a>
+    </form>
 
+   
+    
+        <li><a href="{{ url_for('unregister') }}">Create Reservation as Guest</a></li>
+        <li><a href="{{ url_for('signup') }}">Sign Up for an Account</a></li>
+                
+    
     </h3>
-        
+    
 
 
-
+             
 
 
 
