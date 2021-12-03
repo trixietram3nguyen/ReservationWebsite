@@ -41,89 +41,53 @@
 
 
 <h3 style="text-align:left;">
+    <center>
 <li>
     <label for="First_Name">First Name: {{ account.first_name }}</label>
-    
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
- <label >Mailing Address</label>
-</li><br>
+</li>
 <li>
-    
-    
-    
     <label for="Name"> Last Name: {{ account.last_name }}</label>
-     
-
-
-
-
-
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;
-    <label for="Street">Street: {{ account.street }}</label>
-    <input name="street" id="Street" type="text" />
-</li><br>
+</li>
 <li>
     <label >Email: {{ account.email }}</label>
-    
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    <label for="City">City: {{ account.city }}</label>
-    <input name="city" id="City" type="text" />
-    <label for="State">State: {{ account.state }}</label>
-    <input name="state" id="State" type="text" />
-    <label for="Zip">Zip: {{ account.zip }}</label>
-    <input name="zip" id="Zip" type="text" />
-</li><br>
-
+</li>
 <li>
     <label >Password:  {{ account.password}}</label>
-    
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- <label >Billing Address:</label>
- <input  type="checkbox" />(check if same as mailing address)
-</li><br>
-
-
-
+</li>
+<li>
+    <label >Phone Number: {{ account.phone }} </label>
+</li>
 <li>
     <label >Points earned: {{ account.points }} </label>
-    
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;
-    <label for="Street">Street: {{ account.Bstreet }}</label>
-    <input name="street" id="Street" type="text" />
-</li><br>
-<li>
-    <label >Card Number (Optional): {{ account.CC }} </label>
-    <input  type="text" />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
-    <label for="City">City: {{ account.Bcity }}</label>
-    <input name="city" id="City" type="text" />
-    <label for="State">State: {{ account.Bstate }}</label>
-    <input name="state" id="State" type="text" />
-    <label for="Zip">Zip: {{ account.Bzip }}</label>
-    <input name="zip" id="Zip" type="text" />&emsp;
-<label >Expiration date: {{ account.expiration }}</label>
-<input  type="date" />
-<label >CVV: {{ account.CCV }}</label>
-<input  type="text" />
-</li><br>
-<li>
-    <label >Phone Number (Optional): {{ account.phone }} </label>
-    
-
-</li><br>
-
+</li>
 <li>
     <label >Preferred dinner size: </label>
-    <input  type="text" />
+</li>
 
-</li><br>
+<li>
+    <label>Mailing Adress:</label>
+    <br>
+    <label for="Street">Street Adress: {{ account.street }}</label>
+    <br>
+    <label for="City">City: {{ account.city }}</label>
+    <br>
+    <label for="State">State: {{ account.state }}</label>
+    <br>
+    <label for="Zip">Zip: {{ account.zip }}</label>
+</li>
+<li>
+    <label>Billing Adress:</label>
+    <br>
+    <label for="Street">Street Adress: {{ account.Bstreet }}</label>
+    <br>
+    <label for="City">City: {{ account.Bcity }}</label>
+    <br>
+    <label for="State">State: {{ account.Bstate }}</label>
+    <br>
+    <label for="Zip">Zip: {{ account.Bzip }}</label>
+</li>
+</center>
+
 </h3>
 
 <!----------------------------------------THE END OF ON THE LEFT------------------------->
