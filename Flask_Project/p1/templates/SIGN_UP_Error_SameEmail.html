@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static',     filename='css/SIGN UP1.css') }}">
 
     </link>
-    
-    
+
+
     <h4 style="text-align:center;"><p>Email Already in Use, Please use a different email.</p></h4>
 </head>
 
@@ -36,7 +36,7 @@
 
     <h3 style="text-align:center;">
         <p>SIGN UP</p>
-        <form action="{{ url_for("signup1")}}" method="post">
+        <form action="{{ url_for("signup")}}" method="post">
             <p><b>First Name:</p>
             <input type="text" id="first_name" name="fname" required></input>
             <p><b>Last Name: </p>
@@ -46,12 +46,71 @@
             <p><b>Email:</p>
             <input type="email" id="email_adress" name="email" required></input>
             <p><b>Password:</p>
-            <input type="password" id="password1" name="pword1" required></input>
+            <input type="password" id="password1" name="pword1" required></input><br><br>
+
+
+
+
+           <br><br> <label>Mailing Address</label>
+<br>
+
+    <label for="Street">Street:</label>
+    <input name="street" id="Street" type="text" />
+<br>
+
+
+    <label for="City">City:</label>
+    <input name="city" id="City" type="text" />
+    <label for="State">State:</label>
+    <input name="state" id="State" type="text" />
+    <label for="Zip">Zip:</label>
+    <input name="zip" id="Zip" type="text" />
+<br>
+
+
+
+
+           <br><br> <label >Billing Address</label><br>
+ <input  type="checkbox" />(check if same as mailing address)
+<br>
+
+    <label for="Street">Street:</label>
+    <input name="street" id="Street" type="text" />
+<br>
+
+
+    <label for="City">City:</label>
+    <input name="city" id="City" type="text" />
+    <label for="State">State:</label>
+    <input name="state" id="State" type="text" />
+    <label for="Zip">Zip:</label>
+    <input name="zip" id="Zip" type="text" />
+<br><br><br>
+
+
+
+  <p>Please select your payment type:</p>
+  <input type="radio"  name="fav_language" >
+  <label >Cash</label><br>
+  <input type="radio"  name="fav_language" >
+  <label >Card</label><br>
+  <input type="radio"  name="fav_language" >
+  <label >Check</label>
+
+
+
+
+
+
+
+
+
+
+
             <h2>
-                <input type="submit" value="Sign Up"></form></input><br><br>
-                <a href="{{ url_for('home') }}">Home</a>
-    
-                </h2>
+            <input type="submit" value="Sign Up"></form></input><br>
+            <a href="{{ url_for('home') }}">Home</a>      
+            </h2>
 
 
     </h3>
