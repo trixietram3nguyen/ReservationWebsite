@@ -726,12 +726,10 @@ def ACCOUNT():
     if request.method == "POST":
         print("POST")
     elif request.method == "GET":
-        print("get")
-        acc = LoginForm()
-        acc.username = "A"
-        print(acc.username)
-        fname = "1"
-        return render_template("ACCOUNT INFO.html")
+        account = user
+        account.first_name = "Erik"
+        account.last_name = "Skaug"
+        return render_template("ACCOUNT INFO.html", account = account)
     
 
 #------------------------------------------Time Logics------------------------------------------------
@@ -749,16 +747,25 @@ customers = db.customers
 
 #-------------------------------------------here is my connection database stuff, so don't delete it------------
 
+class user:
+    first_name = "1"
+    last_name = "2"
+    email = "3"
+    state = "4"
+    zip = "5"
+    password = "6"
+    points = "7"
+    CC = "8"
+    expiration = "9"
+    CCV = "11"
+    phone = "12"
+    street = "13"
+    city = "14"
+    Bstreet = "15"
+    Bcity = "16"
+    Bstate = "17"
+    Bzip = "18"
 
 if __name__ == '__main__':
     app.run()
 
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')

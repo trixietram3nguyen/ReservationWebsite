@@ -42,8 +42,8 @@
 
 <h3 style="text-align:left;">
 <li>
-    <label for="First_Name">First Name:</label>
-    <input name="first_name" id="First_Name" type="text" />
+    <label for="First_Name">First Name: {{ account.first_name }}</label>
+    
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
@@ -53,8 +53,8 @@
     
     
     
-    <label for="Name"> Last Name: </label>
-    <input name="last_name" id="Last_Name" type="text" /> 
+    <label for="Name"> Last Name: {{ account.last_name }}</label>
+     
 
 
 
@@ -62,25 +62,25 @@
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;
-    <label for="Street">Street:</label>
+    <label for="Street">Street: {{ account.street }}</label>
     <input name="street" id="Street" type="text" />
 </li><br>
 <li>
-    <label >Email: </label>
-    <input  type="email" />
+    <label >Email: {{ account.email }}</label>
+    
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    <label for="City">City:</label>
+    <label for="City">City: {{ account.city }}</label>
     <input name="city" id="City" type="text" />
-    <label for="State">State:</label>
+    <label for="State">State: {{ account.state }}</label>
     <input name="state" id="State" type="text" />
-    <label for="Zip">Zip:</label>
+    <label for="Zip">Zip: {{ account.zip }}</label>
     <input name="zip" id="Zip" type="text" />
 </li><br>
 
 <li>
-    <label >Password: </label>
-    <input  type="password" />
+    <label >Password:  {{ account.password}}</label>
+    
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
  <label >Billing Address:</label>
@@ -90,32 +90,32 @@
 
 
 <li>
-    <label >Points earned: </label>
-    <input  type="text" />
+    <label >Points earned: {{ account.points }} </label>
+    
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;
-    <label for="Street">Street:</label>
+    <label for="Street">Street: {{ account.Bstreet }}</label>
     <input name="street" id="Street" type="text" />
 </li><br>
 <li>
-    <label >Card Number (Optional): </label>
+    <label >Card Number (Optional): {{ account.CC }} </label>
     <input  type="text" />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-    <label for="City">City:</label>
+    <label for="City">City: {{ account.Bcity }}</label>
     <input name="city" id="City" type="text" />
-    <label for="State">State:</label>
+    <label for="State">State: {{ account.Bstate }}</label>
     <input name="state" id="State" type="text" />
-    <label for="Zip">Zip:</label>
+    <label for="Zip">Zip: {{ account.Bzip }}</label>
     <input name="zip" id="Zip" type="text" />&emsp;
-<label >Expiration date:</label>
+<label >Expiration date: {{ account.expiration }}</label>
 <input  type="date" />
-<label >CVV:</label>
+<label >CVV: {{ account.CCV }}</label>
 <input  type="text" />
 </li><br>
 <li>
-    <label >Phone Number (Optional): </label>
-    <input  type="text" />
+    <label >Phone Number (Optional): {{ account.phone }} </label>
+    
 
 </li><br>
 
