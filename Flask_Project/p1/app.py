@@ -411,8 +411,25 @@ def signup():
     if request.method == "POST":
         fname = request.form.get("fname")
         lname = request.form.get("lname")
+        phone = request.form.get("pnumber")
         email = request.form.get("email")
         pass1 = request.form.get("pword1")
+        checkbox = request.form.get("checkbox")
+        street = request.form.get("street")
+        city = request.form.get("city")
+        state = request.form.get("state")
+        zip = request.form.get("zip")
+        payment = request.form.get("fav_language")
+        if checkbox == "on":
+            Bstreet =street
+            Bcity = city
+            Bstate = state
+            Bzip = zip
+        
+        
+        
+        print(type(checkbox))
+        print(payment)
         query = customers.count({"email":email})  #count the info in the database
         if query != 0:
             # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
@@ -436,10 +453,28 @@ def signup_conf():
 @app.route("/signup1", methods=["GET", "POST"])
 def signup1():
     if request.method == "POST":
+        
         fname = request.form.get("fname")
         lname = request.form.get("lname")
+        phone = request.form.get("pnumber")
         email = request.form.get("email")
         pass1 = request.form.get("pword1")
+        checkbox = request.form.get("checkbox")
+        street = request.form.get("street")
+        city = request.form.get("city")
+        state = request.form.get("state")
+        zip = request.form.get("zip")
+        payment = request.form.get("fav_language")
+        if checkbox == "on":
+            Bstreet =street
+            Bcity = city
+            Bstate = state
+            Bzip = zip
+        
+        
+        
+        print(type(checkbox))
+        print(payment)
         query = customers.count({"email":email})  #count the info in the database
         if query != 0:
             # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
@@ -712,9 +747,6 @@ def confirmation_register():
     input = current_tables
     return render_template("Confirmation_register.html", input=input), {"Refresh": "30; /home"}
 
-
-
-
 @app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
     account = user
@@ -735,9 +767,6 @@ def ACCOUNT():
     account.Bzip = "15"
     return render_template("ACCOUNT INFO.html", account = account)
     
-
-
-
 @app.route("/register_error_date", methods=["GET", "POST"])
 def register_error_date():
     return render_template("Register_Error_Date.html"), {"Refresh": "5; /register"}
