@@ -37,7 +37,7 @@
 
 
     <h3 style="text-align:center;">
-        <pre style="font-size:35px;text-align:center;">CONTACT  and  INFO</pre>
+        <a href="{{ url_for('home') }}";><pre style="font-size:20px;text-align:right;">Home</pre></a>
         <form action="{{ url_for("unregister")}}" method="post">
             <p><b>First Name:</p>
             <input name="fname" id="First_Name" type="text" />
@@ -47,13 +47,14 @@
             <br><br>
             <p><b>Email:</p>
             <input name="email" id="emailadress" type="email" />
-            <p><b>Date:</p>
-            <input name="date" id="regdate" type="date" />
-            <br><br>
-            <p><b>Hour:</p>
-            <input id="appt-time" type="time" name="appt-time" min="17:00" max="22:00" step="900" required>
-            <p><b>Party Size:</p>
-            <select multiple size="4" , id="partysize" name="size">
+            <br><br><p><b>Date:</p>
+            <input name="date" min="2021-12-03" max="2041-12-02" id="regdate" type="date" />
+            <br><br><br>
+            Time:<br>
+                (The restaurant is open from 5pm to 11pm)<br>
+            <input id="appt-time" type="time" name="appt-time" min="17:00" max="23:00" step="900" required>
+            <br><br><p><b>Group Size:</p>
+            <select multiple size="6" , id="partysize" name="size">
 
                 <option   value="1">..1..  </option>
                 <option   value="2">..2..   </option>
@@ -75,7 +76,7 @@
             <br><br>
             ---->
 
-            <input type="submit" value="Continue"></a>
+            <input type="submit" value="Continue"></a><br><br><br>
 
 
             <!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->

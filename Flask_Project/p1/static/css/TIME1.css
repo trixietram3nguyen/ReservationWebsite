@@ -3,20 +3,12 @@ body {
   background-color: pink;
   background-image: url('BUN.jpg');
 }
-h3,h1{
+h3{
 border-style: dashed;
-background-color: rgb(253,179,181);
+background-color: pink;
+  margin-top: 350px;
+  margin-bottom: 400px;
+  margin-right: 400px;
+  margin-left: 400px;
 }
 
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 40px 20px 20px 30px;
-  cursor: pointer;
-}
