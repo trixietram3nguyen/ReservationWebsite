@@ -8,7 +8,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 current_user = ""
-current_tables = "test"
+current_tables = ""
 
 @app.route("/home")
 def home():
@@ -147,7 +147,7 @@ def confirmation_unregister_image():
 @app.route("/confirmation_unregister")
 def confirmation_unregister():
     input = current_tables
-    return render_template("Confirmation_unregister.html", input=input)
+    return render_template("Confirmation_unregister.html", input=input), {"Refresh": "15; /home"}
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -420,11 +420,10 @@ def signup():
         state = request.form.get("state")
         zip = request.form.get("zip")
         payment = request.form.get("fav_language")
-        if checkbox == "on":
-            Bstreet =street
-            Bcity = city
-            Bstate = state
-            Bzip = zip
+        Bstreet = request.form.get("Bstreet")
+        Bcity = request.form.get("Bcity")
+        Bstate = request.form.get("Bstate")
+        Bzip = request.form.get("Bzip")
         
         
         
@@ -439,7 +438,7 @@ def signup():
         else:
             # Else no -> insert new customer info into the database
             # result = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"}},upsert=True)
-            result = customers.insert({"first_name":fname, "last_name":lname, "email":email, "pass":pass1})
+            result = customers.insert({"first_name":fname, "last_name":lname, "email":email,"pass":pass1, "mailing_address":{"street":street,"city":city,"state":state,"zip":zip},"billing_address":{"street":Bstreet,"city":Bcity,"state":Bstate,"zip":Bzip},"phone":phone,"preferred_pmt":payment,"points":0})
             print("New customer inserted")
             return redirect("/signup_conf", code=302)
     return render_template("SIGN_UP.html")
@@ -465,11 +464,10 @@ def signup1():
         state = request.form.get("state")
         zip = request.form.get("zip")
         payment = request.form.get("fav_language")
-        if checkbox == "on":
-            Bstreet =street
-            Bcity = city
-            Bstate = state
-            Bzip = zip
+        Bstreet = request.form.get("Bstreet")
+        Bcity = request.form.get("Bcity")
+        Bstate = request.form.get("Bstate")
+        Bzip = request.form.get("Bzip")
         
         
         
@@ -484,7 +482,7 @@ def signup1():
         else:
             # Else no -> insert new customer info into the database
             # result = customers.update({"email":"lungrob10@yahoomail.com"},{"$set":{"first_name":"Robber", "last_name":"Lunge", "email":"lungrob10@yahoomail.com", "pass":"Lungigi!"}},upsert=True)
-            result = customers.insert({"first_name":fname, "last_name":lname, "email":email, "pass":pass1})
+            result = customers.insert({"first_name":fname, "last_name":lname, "email":email,"pass":pass1, "mailing_address":{"street":street,"city":city,"state":state,"zip":zip},"billing_address":{"street":Bstreet,"city":Bcity,"state":Bstate,"zip":Bzip},"phone":phone,"preferred_pmt":payment,"points":0})
             print("New customer inserted")
             return redirect("/signup_conf", code=302)
     return render_template("SIGN_UP_Error_SameEmail.html")
@@ -745,7 +743,7 @@ def unregister():
 @app.route("/confirmation_register", methods=["GET", "POST"])
 def confirmation_register():
     input = current_tables
-    return render_template("Confirmation_register.html", input=input), {"Refresh": "30; /home"}
+    return render_template("Confirmation_register.html", input=input), {"Refresh": "15; /home"}
 
 @app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
