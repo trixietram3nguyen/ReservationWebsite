@@ -135,19 +135,17 @@ def loginemail():
 
 
 
-@app.route("/confirm1")
-def confirm1():
-    return render_template("CONFIRM_RESERVE_REGISTER.html")
 
 
-@app.route("/confirm2")
-def confirm2():
-    return render_template("CONFIRM_RESERVE_UNREGISTER_PAGE_2.html")
+
+@app.route("/confirmation_unregister_image")
+def confirmation_unregister_image():
+    return render_template("Confirmation_unregister_image.html")
 
 
-@app.route("/confirm3")
-def confirm3():
-    return render_template("CONFIRM_RESERVE_UNREGISTER.html")
+@app.route("/confirmation_unregister")
+def confirmation_unregister():
+    return render_template("Confirmation_unregister.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -393,7 +391,7 @@ def register():
                 # Reserving the table
                 print("\nAdd reservation for table " + str(best_table[1]))
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
-        return redirect("/TIMEregister", code=302)
+        return redirect("/confirmation_register", code=302)
 
 
 
@@ -699,31 +697,40 @@ def unregister():
                 # Reserving the table
                 print("\nAdd reservation for table " + str(best_table[1]))
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
-        return redirect("/TIMEregister", code=302)
+        return redirect("/confirmation_unregister", code=302)
     return render_template("Unregister_Reserve_page.html")
 
-@app.route("/TIMEregister", methods=["GET", "POST"])
-def TIMEregister():
-    if request.method == "POST":
-        hour = request.form.get("rhour")
-        minutes = request.form.get("rminutes")
-        print(hour + " " + minutes)
-        return redirect("/confirm1", code=302)
-    return render_template("TIME (REGISTER).html")
+@app.route("/confirmation_register", methods=["GET", "POST"])
+def confirmation_register():
+    return render_template("Confirmation_register.html")
 
-@app.route("/TIMEunregister", methods=["GET", "POST"])
-def TIMEunregister():
-    if request.method == "POST":
-        hour = request.form.get("rhour")
-        minutes = request.form.get("rminutes")
-        print(hour + " " + minutes)
-        return redirect("/confirm3", code=302)
-    return render_template("TIME(UNREGISTER).html")
+
 
 
 @app.route("/ACCOUNT")
 def ACCOUNT():
     return render_template("ACCOUNT INFO.html")
+
+
+
+@app.route("/register_error_date", methods=["GET", "POST"])
+def register_error_date():
+    return render_template("Register_Error_Date.html"), {"Refresh": "5; /register"}
+
+@app.route("/register_error_time", methods=["GET", "POST"])
+def register_error_time():
+    return render_template("Register_Error_Time.html"), {"Refresh": "5; /register"}   
+
+
+
+@app.route("/unregister_error_date", methods=["GET", "POST"])
+def unregister_error_date():
+    return render_template("Unregister_Error_Date.html"), {"Refresh": "5; /unregister"}
+
+@app.route("/unregister_error_time", methods=["GET", "POST"])
+def unregister_error_time():
+    return render_template("Unregister_Error_Time.html"), {"Refresh": "5; /unregister"}   
+
 
 #------------------------------------------Time Logics------------------------------------------------
 time_list = ["5:00pm", "5:15pm", "5:30pm", "5:45pm", "6:00pm", "6:15pm", "6:30pm", "6:45pm", "7:00pm", "7:15pm", "7:30pm", "7:45pm", "8:00pm", "8:15pm", "8:30pm", "8:45pm", "9:00pm", "9:15pm", "9:30pm", "9:45pm", "10:00pm", "10:15pm", "10:30pm", "10:45pm", "11:00pm" ]
