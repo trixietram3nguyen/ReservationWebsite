@@ -35,7 +35,9 @@
 <br><br>
         THANK YOU FOR YOUR RESERVATION.<br>
         CONFIRMATION HAS SENT TO YOUR EMAIL.<br>
-        <li>Do you want to sign up:</li>
+        You have reserved table(s): {{ input }} <br>
+        <img src="static/css/Floor_Plan.png">
+        <li>Do you want to sign up for an account?</li>
         <a href="{{ url_for('signup') }}">YES</a>
         <br>
         <a href="{{ url_for('home') }}" ;>NO
