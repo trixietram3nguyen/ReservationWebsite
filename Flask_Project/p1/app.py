@@ -711,13 +711,23 @@ def confirmation_register():
 
 @app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
-    if request.method == "POST":
-        print("POST")
-    elif request.method == "GET":
-        account = user
-        account.first_name = "Erik"
-        account.last_name = "Skaug"
-        return render_template("ACCOUNT INFO.html", account = account)
+    account = user
+    account.first_name = "Erik"
+    account.last_name = "Skaug"
+    account.email = current_user
+    account.password = "4"
+    account. phone = "5"
+    account.points = "6"
+    account.payment = "7"
+    account.street = "8"
+    account.city = "9"
+    account.state = "10"
+    account.zip = "11"
+    account.Bstreet = "12"
+    account.Bcity = "13"
+    account.Bstate = "14"
+    account.Bzip = "15"
+    return render_template("ACCOUNT INFO.html", account = account)
     
 
 
