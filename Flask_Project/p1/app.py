@@ -8,6 +8,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 current_user = ""
+current_tables = "test"
 
 @app.route("/home")
 def home():
@@ -145,7 +146,8 @@ def confirmation_unregister_image():
 
 @app.route("/confirmation_unregister")
 def confirmation_unregister():
-    return render_template("Confirmation_unregister.html")
+    input = current_tables
+    return render_template("Confirmation_unregister.html", input=input)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -367,6 +369,7 @@ def register():
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
             print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))
+            
 
             # Make the reservation
             # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
@@ -380,17 +383,18 @@ def register():
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
-                    print("\nAdd reservation for table " + str(best_table[0]))
+                    global current_tables
+                    current_tables = str(best_table[0])
                     # Reserving the table
                     addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
             else:
                 # No -> Table need to be combine
                 # Call the addReservation function twice, flip the table insert and table combine for the second call
-                print("\nAdd reservation for table " + str(best_table[0]))
+                
                 # Reserving the table
                 addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
                 # Reserving the table
-                print("\nAdd reservation for table " + str(best_table[1]))
+                current_tables = str(best_table[0]) + " and  " + str(best_table[1])
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
         return redirect("/confirmation_register", code=302)
 
@@ -669,12 +673,11 @@ def unregister():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register_error_time", code=302)
+            return redirect("/unregister_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
-            print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))
-
+            print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))  
             # Make the reservation
             # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
             if (best_table[1] == 0):
@@ -683,28 +686,31 @@ def unregister():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
-                    return redirect("/register_error_time", code=302)
+                    return redirect("/unregister_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
-                    print("\nAdd reservation for table " + str(best_table[0]))
+                    global current_tables
+                    current_tables = str(best_table[0])
                     # Reserving the table
                     addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
             else:
                 # No -> Table need to be combine
                 # Call the addReservation function twice, flip the table insert and table combine for the second call
-                print("\nAdd reservation for table " + str(best_table[0]))
+                
                 # Reserving the table
                 addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
                 # Reserving the table
-                print("\nAdd reservation for table " + str(best_table[1]))
+                
+                current_tables = str(best_table[0]) + " and " + str(best_table[1])
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
         return redirect("/confirmation_unregister", code=302)
     return render_template("Unregister_Reserve_page.html")
 
 @app.route("/confirmation_register", methods=["GET", "POST"])
 def confirmation_register():
-    return render_template("Confirmation_register.html"), {"Refresh": "5; /home"}
+    input = current_tables
+    return render_template("Confirmation_register.html", input=input), {"Refresh": "30; /home"}
 
 
 
