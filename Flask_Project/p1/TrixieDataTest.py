@@ -23,6 +23,7 @@ pf_email = profile['email']
 pf_pass = profile['pass']
 pf_mailingAdd = profile['mailing_address']
 pf_billingAdd = profile['billing_address']
+pf_phone = profile['phone']
 pf_card = profile['card']
 pf_points = profile['points']
 pf_diner = profile['preferred_diner']
@@ -31,8 +32,14 @@ print(pf_firstName + "\n")
 print(pf_lastName + "\n")
 print(pf_email + "\n")
 print(pf_pass + "\n")
-print(pf_mailingAdd + "\n")
-print(pf_billingAdd + "\n")
-print(pf_card + "\n")
-print(pf_points + "\n")
+print(pf_mailingAdd)
+print("\n")
+print(pf_billingAdd)
+print("\n")
+print(pf_phone)
+print("\n")
+print(pf_card)
+print("\n")
+print(pf_points)
+print("\n")
 print(pf_diner + "\n")
