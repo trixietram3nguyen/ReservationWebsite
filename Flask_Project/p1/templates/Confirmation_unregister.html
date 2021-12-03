@@ -6,17 +6,49 @@
 <!-------------------------------------- This is the head of the page---------------------------------------------------->
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/CONFIRM1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/CONFIRM2.css') }}">
 
     </link>
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-------------------------------------- This is a body of the page---------------------------------------------------->
 
 <body class="w3-container">
 
-    <h1>
+    <h1 style="text-align:center;">
+<br><br>
         THANK YOU FOR YOUR RESERVATION.<br>
-        CONFIRMATION HAS SENT TO YOUR EMAIL. </h1>
+        CONFIRMATION HAS SENT TO YOUR EMAIL.<br>
+        <li>Do you want to sign up:</li>
+        <a href="{{ url_for('signup') }}">YES</a>
+        <br>
+        <a href="{{ url_for('confirmation_unregister_image') }}" ;>NO
+        </a>
+<br><br>
+    </h1>
+
+
+
+
+
+
+
 </body>
 
 </html>
