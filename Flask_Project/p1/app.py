@@ -8,6 +8,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 current_user = ""
+current_tables = "test"
 
 @app.route("/home")
 def home():
@@ -145,7 +146,8 @@ def confirmation_unregister_image():
 
 @app.route("/confirmation_unregister")
 def confirmation_unregister():
-    return render_template("Confirmation_unregister.html")
+    input = current_tables
+    return render_template("Confirmation_unregister.html", input=input)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -367,6 +369,7 @@ def register():
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
             print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))
+            
 
             # Make the reservation
             # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
@@ -380,17 +383,18 @@ def register():
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
-                    print("\nAdd reservation for table " + str(best_table[0]))
+                    global current_tables
+                    current_tables = str(best_table[0])
                     # Reserving the table
                     addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
             else:
                 # No -> Table need to be combine
                 # Call the addReservation function twice, flip the table insert and table combine for the second call
-                print("\nAdd reservation for table " + str(best_table[0]))
+                
                 # Reserving the table
                 addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
                 # Reserving the table
-                print("\nAdd reservation for table " + str(best_table[1]))
+                current_tables = str(best_table[0]) + " and  " + str(best_table[1])
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
         return redirect("/confirmation_register", code=302)
 
@@ -407,8 +411,25 @@ def signup():
     if request.method == "POST":
         fname = request.form.get("fname")
         lname = request.form.get("lname")
+        phone = request.form.get("pnumber")
         email = request.form.get("email")
         pass1 = request.form.get("pword1")
+        checkbox = request.form.get("checkbox")
+        street = request.form.get("street")
+        city = request.form.get("city")
+        state = request.form.get("state")
+        zip = request.form.get("zip")
+        payment = request.form.get("fav_language")
+        if checkbox == "on":
+            Bstreet =street
+            Bcity = city
+            Bstate = state
+            Bzip = zip
+        
+        
+        
+        print(type(checkbox))
+        print(payment)
         query = customers.count({"email":email})  #count the info in the database
         if query != 0:
             # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
@@ -432,10 +453,28 @@ def signup_conf():
 @app.route("/signup1", methods=["GET", "POST"])
 def signup1():
     if request.method == "POST":
+        
         fname = request.form.get("fname")
         lname = request.form.get("lname")
+        phone = request.form.get("pnumber")
         email = request.form.get("email")
         pass1 = request.form.get("pword1")
+        checkbox = request.form.get("checkbox")
+        street = request.form.get("street")
+        city = request.form.get("city")
+        state = request.form.get("state")
+        zip = request.form.get("zip")
+        payment = request.form.get("fav_language")
+        if checkbox == "on":
+            Bstreet =street
+            Bcity = city
+            Bstate = state
+            Bzip = zip
+        
+        
+        
+        print(type(checkbox))
+        print(payment)
         query = customers.count({"email":email})  #count the info in the database
         if query != 0:
             # If yes (meaning there is 0 number of that info in the database) -> print error and ask to enter new email
@@ -669,12 +708,11 @@ def unregister():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register_error_time", code=302)
+            return redirect("/unregister_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
-            print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))
-
+            print("\nThe table will be reserve is " + str(best_table[0]) + " and " + str(best_table[1]))  
             # Make the reservation
             # If best_table[1] is 0 -> table will need to be combine or non of the table can be reserve
             if (best_table[1] == 0):
@@ -683,55 +721,61 @@ def unregister():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
-                    return redirect("/register_error_time", code=302)
+                    return redirect("/unregister_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
-                    print("\nAdd reservation for table " + str(best_table[0]))
+                    global current_tables
+                    current_tables = str(best_table[0])
                     # Reserving the table
                     addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
             else:
                 # No -> Table need to be combine
                 # Call the addReservation function twice, flip the table insert and table combine for the second call
-                print("\nAdd reservation for table " + str(best_table[0]))
+                
                 # Reserving the table
                 addReservation(best_table[0], date, time, confirmation, name, party_size, email, best_table[1])
                 # Reserving the table
-                print("\nAdd reservation for table " + str(best_table[1]))
+                
+                current_tables = str(best_table[0]) + " and " + str(best_table[1])
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
         return redirect("/confirmation_unregister", code=302)
     return render_template("Unregister_Reserve_page.html")
 
 @app.route("/confirmation_register", methods=["GET", "POST"])
 def confirmation_register():
-    return render_template("Confirmation_register.html"), {"Refresh": "5; /home"}
-
-
-
+    input = current_tables
+    return render_template("Confirmation_register.html", input=input), {"Refresh": "30; /home"}
 
 @app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
     account = user
-    account.first_name = "Erik"
-    account.last_name = "Skaug"
-    account.email = current_user
-    account.password = "4"
-    account. phone = "5"
-    account.points = "6"
-    account.payment = "7"
-    account.street = "8"
-    account.city = "9"
-    account.state = "10"
-    account.zip = "11"
-    account.Bstreet = "12"
-    account.Bcity = "13"
-    account.Bstate = "14"
-    account.Bzip = "15"
+    # Getting information of the customer for the profile page
+    email = "rtq.nguyen12@gmail.com"
+
+    query = customers.find({"email":current_user})
+    for result in query:
+        profile = result
+    pf_mailingAdd = profile['mailing_address']
+    pf_billingAdd = profile['billing_address']
+
+    account.first_name = profile['first_name']
+    account.last_name = profile['last_name']
+    account.email = profile['email']
+    account.password = profile['pass']
+    account. phone = profile['phone']
+    account.points = str(profile['points'])
+    account.payment = profile['preferred_pmt']
+    account.street = pf_mailingAdd['street']
+    account.city = pf_mailingAdd['city']
+    account.state = pf_mailingAdd['state']
+    account.zip = pf_mailingAdd['zip']
+    account.Bstreet = pf_billingAdd['street']
+    account.Bcity = pf_billingAdd['city']
+    account.Bstate = pf_billingAdd['state']
+    account.Bzip = pf_billingAdd['zip']
     return render_template("ACCOUNT INFO.html", account = account)
     
-
-
-
 @app.route("/register_error_date", methods=["GET", "POST"])
 def register_error_date():
     return render_template("Register_Error_Date.html"), {"Refresh": "5; /register"}
