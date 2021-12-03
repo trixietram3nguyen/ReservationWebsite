@@ -362,7 +362,7 @@ def register():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register", code=302)
+            return redirect("/register_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
@@ -376,6 +376,7 @@ def register():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
+                    return redirect("/register_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
@@ -668,7 +669,7 @@ def unregister():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register", code=302)
+            return redirect("/register_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
@@ -682,6 +683,7 @@ def unregister():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
+                    return redirect("/register_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
@@ -697,12 +699,12 @@ def unregister():
                 # Reserving the table
                 print("\nAdd reservation for table " + str(best_table[1]))
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
-        return redirect("/confirmation_unregister", code=302)
+        return redirect("/confirmation_register", code=302)
     return render_template("Unregister_Reserve_page.html")
 
 @app.route("/confirmation_register", methods=["GET", "POST"])
 def confirmation_register():
-    return render_template("Confirmation_register.html")
+    return render_template("Confirmation_register.html"), {"Refresh": "5; /home"}
 
 
 
