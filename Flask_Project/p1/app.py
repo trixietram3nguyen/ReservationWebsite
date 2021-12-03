@@ -362,7 +362,7 @@ def register():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register", code=302)
+            return redirect("/register_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
@@ -376,6 +376,7 @@ def register():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
+                    return redirect("/register_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
@@ -668,7 +669,7 @@ def unregister():
         if len(table_num) == 0:
             print("\nNo more availability. Pick another time/date.")
             #add confirmation redirect page here
-            return redirect("/register", code=302)
+            return redirect("/register_error_time", code=302)
         else:
             # Find out what table best fit for the party size
             best_table = tableInsert(table_num, table_size, party_size, pairs)
@@ -682,6 +683,7 @@ def unregister():
                 if (best_table[0] == 0):
                     # Yes -> No more table to reserve
                     print("\nNo more table is available to reserve. Please pick another time/date.")
+                    return redirect("/register_error_time", code=302)
                 else:
                     # No -> There are table to reserve
                     # Call the addReservation function once
@@ -702,14 +704,31 @@ def unregister():
 
 @app.route("/confirmation_register", methods=["GET", "POST"])
 def confirmation_register():
-    return render_template("Confirmation_register.html")
+    return render_template("Confirmation_register.html"), {"Refresh": "5; /home"}
 
 
 
 
-@app.route("/ACCOUNT")
+@app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
-    return render_template("ACCOUNT INFO.html")
+    account = user
+    account.first_name = "Erik"
+    account.last_name = "Skaug"
+    account.email = current_user
+    account.password = "4"
+    account. phone = "5"
+    account.points = "6"
+    account.payment = "7"
+    account.street = "8"
+    account.city = "9"
+    account.state = "10"
+    account.zip = "11"
+    account.Bstreet = "12"
+    account.Bcity = "13"
+    account.Bstate = "14"
+    account.Bzip = "15"
+    return render_template("ACCOUNT INFO.html", account = account)
+    
 
 
 
@@ -747,6 +766,23 @@ customers = db.customers
 
 #-------------------------------------------here is my connection database stuff, so don't delete it------------
 
+class user:
+    first_name = "1"
+    last_name = "2"
+    email = "3"
+    password = "4"
+    phone = "5"
+    points = "6"
+    payment = "7"
+    street = "8"
+    city = "9"
+    state = "10"
+    zip = "11"
+    Bstreet = "12"
+    Bcity = "13"
+    Bstate = "14"
+    Bzip = "15"
 
 if __name__ == '__main__':
     app.run()
+
