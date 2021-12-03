@@ -699,7 +699,7 @@ def unregister():
                 # Reserving the table
                 print("\nAdd reservation for table " + str(best_table[1]))
                 addReservation(best_table[1], date, time, confirmation, name, party_size, email, best_table[0])
-        return redirect("/confirmation_register", code=302)
+        return redirect("/confirmation_unregister", code=302)
     return render_template("Unregister_Reserve_page.html")
 
 @app.route("/confirmation_register", methods=["GET", "POST"])
