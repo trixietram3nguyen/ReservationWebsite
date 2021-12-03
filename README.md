@@ -1,3 +1,7 @@
+# Direction on how to open the web app
+1. clone or download the project into your laptop
+
+
 # ReservationWebsite
  Making a reservation website for a restaurant
 
