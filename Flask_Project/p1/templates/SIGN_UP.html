@@ -44,8 +44,6 @@
             <input type="email" id="email_adress" name="email" required></input>
             <p><b>Password:</p>
             <input type="password" id="password1" name="pword1" required></input><br><br>
-<<<<<<< Updated upstream
-=======
 
 
 
@@ -70,7 +68,7 @@
 
 
            <br><br> <label >Billing Address</label><br>
- <input  type="checkbox" name="checkbox"/>(check if same as mailing address)
+ <input  type="checkbox" />(check if same as mailing address)
 <br>
 
     <label for="Street">Street:</label>
@@ -89,12 +87,12 @@
 
 
   <p>Please select your payment type:</p>
-  <input type="radio"  name="fav_language" value = "Cash">
-  <label for = "Cash">Cash</label><br>
-  <input type="radio"  name="fav_language" value = "Card">
-  <label for = "Cash">Card</label><br>
-  <input type="radio"  name="fav_language" value = "Check">
-  <label for = "Cash">Check</label>
+  <input type="radio"  name="fav_language" >
+  <label >Cash</label><br>
+  <input type="radio"  name="fav_language" >
+  <label >Card</label><br>
+  <input type="radio"  name="fav_language" >
+  <label >Check</label>
 
 
 
@@ -106,11 +104,9 @@
 
 
 
->>>>>>> Stashed changes
             <h2>
-            <input type="submit" value="Sign Up"></form></input><br><br>
-            <a href="{{ url_for('home') }}">Home</a>
-
+            <input type="submit" value="Sign Up"></form></input><br>
+            <a href="{{ url_for('home') }}">Home</a>      
             </h2>
 
 

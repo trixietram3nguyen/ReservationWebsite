@@ -750,21 +750,30 @@ def confirmation_register():
 @app.route("/ACCOUNT", methods=["GET", "POST"])
 def ACCOUNT():
     account = user
-    account.first_name = "Erik"
-    account.last_name = "Skaug"
-    account.email = current_user
-    account.password = "4"
-    account. phone = "5"
-    account.points = "6"
-    account.payment = "7"
-    account.street = "8"
-    account.city = "9"
-    account.state = "10"
-    account.zip = "11"
-    account.Bstreet = "12"
-    account.Bcity = "13"
-    account.Bstate = "14"
-    account.Bzip = "15"
+    # Getting information of the customer for the profile page
+    email = "rtq.nguyen12@gmail.com"
+
+    query = customers.find({"email":current_user})
+    for result in query:
+        profile = result
+    pf_mailingAdd = profile['mailing_address']
+    pf_billingAdd = profile['billing_address']
+
+    account.first_name = profile['first_name']
+    account.last_name = profile['last_name']
+    account.email = profile['email']
+    account.password = profile['pass']
+    account. phone = profile['phone']
+    account.points = str(profile['points'])
+    account.payment = profile['preferred_pmt']
+    account.street = pf_mailingAdd['street']
+    account.city = pf_mailingAdd['city']
+    account.state = pf_mailingAdd['state']
+    account.zip = pf_mailingAdd['zip']
+    account.Bstreet = pf_billingAdd['street']
+    account.Bcity = pf_billingAdd['city']
+    account.Bstate = pf_billingAdd['state']
+    account.Bzip = pf_billingAdd['zip']
     return render_template("ACCOUNT INFO.html", account = account)
     
 @app.route("/register_error_date", methods=["GET", "POST"])
