@@ -1,6 +1,7 @@
 # Direction on how to open the web app
 1. clone or download the project into your laptop
-
+2. Open Flask_project folder, inside p1 folder choose app.py and run the code
+3. On any browser, Google Chrome recommended, typ localhost:5000/home for the home page and proceed
 
 # ReservationWebsite
  Making a reservation website for a restaurant
