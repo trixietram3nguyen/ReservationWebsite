@@ -3,6 +3,9 @@
 2. Open Flask_project folder, inside p1 folder choose app.py and run the code
 3. On any browser, Google Chrome recommended, typ localhost:5000/home for the home page and proceed
 
+- To check for HTML open the templates folder inside p1, CSS open the static/css folder inside p1.
+- To check database and queries, go to the Web Reservation Project folder.
+
 # ReservationWebsite
  Making a reservation website for a restaurant
 
