@@ -59,7 +59,7 @@ else:
 customers.update_one({"email":"tx3rry@hotmail.com"},
                 {"$set":{"mailing_address":{"street":mailing_address[0],"city":mailing_address[1],"state":mailing_address[2],"zip":mailing_address[3]},
                 "billing_address":{"street":billing_address[0],"city":billing_address[1],"state":billing_address[2],"zip":billing_address[3]},
-                "points":points,"preferred":preferred_card,"preferred_diner":preferred_diner}})
+                "points":points,"preferred":preferred_card}})
 
 --------------------------------
 # Get customer name from email
@@ -96,7 +96,6 @@ pf_billingAdd = profile['billing_address']
 pf_phone = profile['phone']
 pf_pmt = profile['preferred_pmt']
 pf_points = profile['points']
-pf_diner = profile['preferred_diner']
 
 print(pf_firstName + "\n")
 print(pf_lastName + "\n")
@@ -120,4 +119,3 @@ print(pf_pmt)
 print("\n")
 print(pf_points)
 print("\n")
-print(pf_diner + "\n")
