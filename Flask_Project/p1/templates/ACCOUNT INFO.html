@@ -90,8 +90,8 @@
     <input name="street" id="Street" type="text" />
 </li><br>
 <li>
-    <label >Card Number (Optional): </label>
-    <input  type="text" />
+    <label >Card Number: </label>
+    <input  type="text" maxlength="16">
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
     <label for="City">City:</label>
@@ -101,12 +101,43 @@
     <label for="Zip">Zip:</label>
     <input name="zip" id="Zip" type="text" />&emsp;
 <label >Expiration date:</label>
-<input  type="date" />
+<select>
+    <option >Enter month</option>
+        <option >January</option>
+        <option >February</option>
+        <option >March</option>
+        <option >April</option>
+        <option >May</option>
+        <option >June</option>
+        <option >July</option>
+        <option >August</option>
+        <option >September</option>
+        <option >October</option>
+        <option >November</option>
+        <option >December</option>
+    </select>
+    
+    <select >
+     <option >Enter year</option>
+        <option >2021</option>
+        <option >2022</option>
+        <option >2023</option>
+        <option >2024</option>
+        <option >2025</option>
+        <option >2026</option>
+        <option >2027</option>
+        <option >2028</option>
+        <option >2029</option>
+        <option >2030</option>
+        <option >2031</option>
+    </select>
+
+
 <label >CVV:</label>
-<input  type="text" />
+<input  type="text" maxlength="3" >
 </li><br>
 <li>
-    <label >Phone Number (Optional): </label>
+    <label >Phone Number: </label>
     <input  type="text" />
 
 </li><br>
