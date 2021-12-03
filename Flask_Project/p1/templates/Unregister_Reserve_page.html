@@ -37,7 +37,7 @@
 
 
     <h3 style="text-align:center;">
-        <pre style="font-size:35px;text-align:center;">CONTACT  and  INFO</pre>
+        <a href="{{ url_for('home') }}";><pre style="font-size:20px;text-align:right;">Home</pre></a>
         <form action="{{ url_for("unregister")}}" method="post">
             <p><b>First Name:</p>
             <input name="fname" id="First_Name" type="text" />
@@ -47,24 +47,27 @@
             <br><br>
             <p><b>Email:</p>
             <input name="email" id="emailadress" type="email" />
-            <p><b>Date:</p>
-            <input name="date" id="regdate" type="date" />
-            <br><br>
-            <p><b>Party Size:</p>
-            <select multiple size="4" , id="partysize" name="size">
+            <br><br><p><b>Date:</p>
+            <input name="date" min="2021-12-03" max="2041-12-02" id="regdate" type="date" />
+            <br><br><br>
+            Time:<br>
+                (The restaurant is open from 5pm to 11pm)<br>
+            <input id="appt-time" type="time" name="appt-time" min="17:00" max="23:00" step="900" required>
+            <br><br><p><b>Group Size:</p>
+            <select multiple size="6" , id="partysize" name="size">
 
-                <option> ...1... </option>
-                <option> ...2... </option>
-                <option> ...3... </option>
-                <option> ...4... </option>
-                <option> ...5... </option>
-                <option> ...6... </option>
-                <option> ...7... </option>
-                <option> ...8... </option>
-                <option> ...9... </option>
-                <option> ...10... </option>
-                <option> ...11... </option>
-                <option> ...12... </option>
+                <option   value="1">..1..  </option>
+                <option   value="2">..2..   </option>
+                <option   value="3">..3..   </option>
+                <option   value="4">..4..   </option>
+                <option   value="5">..5..   </option>
+                <option   value="6">..6..  </option>
+                <option   value="7">..7..   </option>
+                <option   value="8">..8..   </option>
+                <option   value="9">..9..   </option>
+                <option   value="10">..10 ..  </option>
+                <option   value="11">..11..   </option>
+                <option   value="12">..12..   </option>
             </select>
             <br><br><br><br>
            <!------
@@ -73,7 +76,7 @@
             <br><br>
             ---->
 
-            <input type="submit" value="Continue"></a>
+            <input type="submit" value="Continue"></a><br><br><br>
 
 
             <!-- <input type="submit" value="Continue" style="height:50px; width:100px;text-align: center"/>-->
